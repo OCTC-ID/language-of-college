@@ -27,7 +27,7 @@ import re
 import sys
 from pathlib import Path
 
-V = 7
+V = 8
 SITE = "The Language of College"
 SUBTITLE = "A Reading, Writing &amp; Communication Toolkit"
 ROOT = Path(__file__).resolve().parent.parent
@@ -335,7 +335,7 @@ def build_home(mode):
     )
     body = fill((SRC / "home.html").read_text(), p, mode)
     body = body.replace("<!--TOC-->", cards).replace("<!--INSTRUCTOR-->", toc_items(INSTRUCTOR, p, mode))
-    desc = "Short, free lessons for the reading, writing, and communication you do in college classes, with an Instructor Companion for faculty."
+    desc = "Short lessons for the reading, writing, and communication you do in college classes, with an Instructor Companion for faculty."
     return f"""{head(f"{SITE}: {SUBTITLE}", desc, p, mode)}
 <body class="student">
 {bar(p, mode)}

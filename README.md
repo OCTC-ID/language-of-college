@@ -23,9 +23,12 @@ js/site.js              Menu behavior, copy buttons, and the prompt builder
 images/                 OCTC logos and tab icons (from the official logo files)
 assignments/            Student pages: Understand the assignment
 participate/            Student pages: Take part in class
+grammar/                Student pages: Grammar for college writing
 instructors/            Instructor Companion pages and tools
 _src/build.py           Table of contents and page shell; builds every page
 _src/pages/*.html       The body of each page (edit these)
+_src/export.py          Builds the PDF and EPUB downloads
+downloads/              The PDF and EPUB (generated)
 ```
 
 ## Rules
@@ -49,6 +52,24 @@ The pages in the site folders are generated. Edit the source, then rebuild:
 To add a page, give it a path in `SECTIONS` (or `INSTRUCTOR`), add its details to `PAGES`, and create `_src/pages/<key>.html`. A page with no path shows as "Coming soon."
 
 `python3 _src/build.py --preview <folder>` writes single-file copies for review. Do not publish those.
+
+## Offline editions (PDF and EPUB)
+
+The home page links to two downloads for students without steady internet access:
+
+- `downloads/language-of-college.pdf`: a tagged PDF with bookmarks, a document title, and a language setting.
+- `downloads/language-of-college.epub`: an EPUB 3 file with accessibility metadata. Text resizes and reflows on a phone.
+
+After you change any page, rebuild them so the downloads match the site:
+
+```
+python3 _src/build.py
+python3 _src/export.py
+```
+
+`export.py` needs Playwright (Chromium), beautifulsoup4, pikepdf, and lxml. Interactive parts, such as the prompt builder form, are replaced in the downloads with a pointer to the website. Styles for the downloads are in `_src/export.css`.
+
+Before a major release, check the PDF with an accessibility checker (Acrobat or PAC) and the EPUB with EPUBCheck.
 
 ## Page pattern
 

@@ -27,7 +27,7 @@ import re
 import sys
 from pathlib import Path
 
-V = 5
+V = 6
 SITE = "The Language of College"
 SUBTITLE = "A Reading, Writing &amp; Communication Toolkit"
 ROOT = Path(__file__).resolve().parent.parent
@@ -54,7 +54,7 @@ SECTIONS = [
     ]),
     ("participate", "Take part in class", "Join discussions and reflect on your learning.", [
         ("discussion-post", "Writing a discussion post", "participate/discussion-post.html"),
-        ("replying", "Replying to classmates", None),
+        ("replying", "Replying to classmates", "participate/replying.html"),
         ("journal", "Writing a journal or reflection", None),
         ("interacting", "Interacting in class: common expectations", None),
     ]),
@@ -65,6 +65,12 @@ SECTIONS = [
     ("writing", "Write", "Build clear sentences and paragraphs.", [
         ("paragraph", "Building a paragraph", None),
         ("sentences", "Sentences that say what you mean", None),
+    ]),
+    ("grammar", "Grammar for college writing", "Practice the grammar points that appear in every assignment.", [
+        ("articles", "Articles: a, an, the", "grammar/articles.html"),
+        ("subject-verb", "Subject-verb agreement", None),
+        ("verb-tense", "Verb tense: staying consistent", None),
+        ("sentence-boundaries", "Sentence boundaries: fragments and run-ons", None),
     ]),
     ("feedback", "Revise and use feedback", "Turn comments on your work into a plan.", [
         ("instructor-feedback", "Understanding instructor feedback", None),
@@ -127,6 +133,21 @@ PAGES.update({
         when="you want to draft a new assignment prompt or check one you already have.",
         meta="Nothing you type on this page is saved or sent anywhere.",
         desc="A fill-in tool that assembles a clear assignment prompt, plus a Copilot prompt for checking the clarity of an existing assignment.",
+    ),
+})
+
+PAGES.update({
+    "replying": dict(
+        h1="Replying to Classmates",
+        when="you need to reply to a classmate&rsquo;s post in an online discussion.",
+        meta="About 8 minutes. Includes practice with answers.",
+        desc="How to reply to a classmate in a college online discussion: answer, agree and add, disagree politely, or ask, with language for softening disagreement.",
+    ),
+    "articles": dict(
+        h1="Articles: A, An, The",
+        when="you are not sure whether a noun needs <span translate=\"no\">a</span>, <span translate=\"no\">an</span>, <span translate=\"no\">the</span>, or no article.",
+        meta="About 12 minutes. Includes practice with answers.",
+        desc="How to choose a, an, the, or no article in college writing, with three questions to ask, common problems with uncountable nouns, and practice.",
     ),
 })
 

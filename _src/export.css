@@ -1,0 +1,49 @@
+/* Offline editions (PDF and EPUB). Loaded after css/styles.css by _src/export.py. */
+
+body.export { font-size: 12pt; line-height: 1.55; }
+body.export .wide, body.export .reading > * { max-width: none; }
+body.export article.page > * { max-width: none; }
+body.export section { margin-top: 26pt; }
+body.export h1 { font-size: 24pt; line-height: 1.15; margin: 0 0 10pt; }
+body.export .page-title { font-size: 20pt; line-height: 1.15; margin: 2pt 0 8pt; font-weight: 800; display: block; background: none; padding: 0; }
+body.export .sec { display: block; background-image: none; padding: 0 0 3pt; margin: 0 0 10pt; font-size: 15pt; border-bottom: 3px solid var(--mark); }
+body.export .online { font-size: 9.5pt; color: var(--muted); margin: 0 0 6pt; overflow-wrap: anywhere; }
+body.export .answer-open { margin-top: 14pt; border: 2px solid var(--blue); border-radius: var(--radius); background: #fff; padding: 10pt 14pt; }
+body.export .answer-title { font-weight: 800; color: var(--blue); margin: 0 0 6pt; }
+body.export .answer-open li { margin-bottom: .6em; }
+body.export .part-note, body.export .eeo { font-size: 10pt; color: var(--muted); }
+
+.cover { text-align: left; }
+.cover img { height: 46pt; width: auto; margin: 0 0 40pt; }
+.cover h1 { font-size: 34pt !important; margin-bottom: 6pt !important; }
+.cover .sub { font-size: 16pt; color: var(--blue); margin: 0 0 30pt; }
+.book-toc ul { list-style: none; padding-left: 0; }
+.book-toc > ul > li { font-weight: 800; color: var(--navy); margin-top: 10pt; }
+.book-toc ul ul { padding-left: 14pt; font-weight: 400; }
+.book-toc ul ul li { margin: 3pt 0; }
+
+/* PDF only */
+body.pdf .cover { padding-top: 1.6in; break-after: page; }
+body.pdf .book-toc { break-after: page; }
+body.pdf .part { margin-top: 0; }
+body.pdf .part > h1 { break-before: page; border-bottom: 4px solid var(--gold); padding-bottom: 6pt; }
+body.pdf article.page + article.page { break-before: page; }
+body.pdf article.page { margin-top: 18pt; }
+body.pdf .colophon { break-before: page; }
+body.pdf h1, body.pdf h2, body.pdf h3, body.pdf h4, body.pdf h5 { break-after: avoid; }
+body.pdf .ba { grid-template-columns: 1fr 1fr; }
+body.pdf a { color: var(--blue); }
+body.pdf a.ref { color: #fff; }
+body.pdf .table-wrap { overflow: visible; }
+
+/* EPUB only: single column, let the reading app set margins and size */
+body.epub { margin: 0 4%; font-size: 1em; }
+body.epub .ba, body.epub .toc, body.epub .how { display: block; }
+body.epub .ba figure { margin-bottom: 1em; }
+body.epub .cover { padding-top: 2em; }
+body.epub .table-wrap { overflow: visible; }
+body.epub table { font-size: .92em; }
+/* Let long blocks continue onto the next page instead of leaving a blank gap */
+body.pdf .focus, body.pdf .annotated, body.pdf .practice, body.pdf .answer-open, body.pdf .ba figure { break-inside: auto; }
+body.pdf .notes li, body.pdf tr, body.pdf .starters li, body.pdf .five li, body.pdf .practices > li { break-inside: avoid; }
+body.pdf section { margin-top: 20pt; }

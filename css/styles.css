@@ -308,3 +308,17 @@ footer .eeo { margin: 12px 0 0; font-size: .8rem; line-height: 1.55; max-width: 
 @media print { .band.tint { background: none; border: 0; } .toc .tile-head { background: none; border-bottom: 1px solid var(--ink); } .toc .tile-head h3, .toc .tile-head .goal { color: var(--ink); } }
 /* Tile titles: capitals come from CSS, so the HTML keeps normal spelling for screen readers and translation */
 .toc .tile-head h3 { text-transform: uppercase; letter-spacing: .07em; font-size: 1rem; }
+
+/* Home: offline downloads */
+.offline { margin-top: 18px; border: 1px solid #c9dcf0; border-left: 6px solid var(--gold); border-radius: var(--radius); padding: 16px 20px; background: #fff; }
+.offline h3 { margin: 0 0 4px; }
+.offline p { margin: 0 0 8px; }
+.offline ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+.offline li { margin: 0; }
+.offline a { font-weight: 800; }
+.offline .desc { display: block; font-size: .93rem; color: var(--muted); }
+@media (max-width: 700px) { .offline ul { grid-template-columns: 1fr; } }
+@media print { .offline { display: none; } }
+/* Space between parts inside a language focus box */
+.focus h3 { margin-top: 24px; }
+.focus .label + h3 { margin-top: 0; }

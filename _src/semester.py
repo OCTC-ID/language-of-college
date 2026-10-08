@@ -38,7 +38,11 @@ SCHEDULE = [
 
 # Short tips shown under the schedule. Leave the list empty to show none.
 TIPS = [
-    "Bring your assignment prompt, your draft, and your questions.",
+    "Make an appointment for help with writing. Call or email the TLC.",
+    "Bring your assignment, your draft, and your class notes.",
+    "Bring your syllabus, your textbook, and any handouts from class.",
+    "Know your instructor's name and the name of your class. The tutor writes them on a TLC form.",
+    "One session can last as long as two hours.",
 ]
 
 TLC_URL = "https://owensboro.kctcs.edu/current-students/academic-resources/teaching-and-learning-center.aspx"

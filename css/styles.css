@@ -306,3 +306,5 @@ footer .eeo { margin: 12px 0 0; font-size: .8rem; line-height: 1.55; max-width: 
 .toc > li > ul { border-top: 0; padding: 12px 20px 16px; }
 .toc ul li.live a::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); margin-right: 8px; vertical-align: 1px; }
 @media print { .band.tint { background: none; border: 0; } .toc .tile-head { background: none; border-bottom: 1px solid var(--ink); } .toc .tile-head h3, .toc .tile-head .goal { color: var(--ink); } }
+/* Tile titles: capitals come from CSS, so the HTML keeps normal spelling for screen readers and translation */
+.toc .tile-head h3 { text-transform: uppercase; letter-spacing: .07em; font-size: 1rem; }

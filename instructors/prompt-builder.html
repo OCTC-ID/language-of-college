@@ -7,7 +7,7 @@
 <meta name="description" content="A fill-in tool that assembles a clear assignment prompt, plus a Copilot prompt for checking the clarity of an existing assignment.">
 <link rel="icon" type="image/png" sizes="48x48" href="../images/icon-48.png">
 <link rel="apple-touch-icon" href="../images/icon-180.png">
-<link rel="stylesheet" href="../css/styles.css?v=6">
+<link rel="stylesheet" href="../css/styles.css?v=7">
 </head>
 <body class="instructor">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -100,7 +100,25 @@
               <option value="AI-supported. You can use AI for specific parts of the work, but the thinking and the final product are yours.">AI-supported: AI for specific parts; the thinking and final product are theirs</option>
               <option value="AI-integrated. Learning to use AI well is part of this assignment.">AI-integrated: learning to use AI well is part of the assignment</option>
             </select>
+            <span class="hint">If you choose AI-supported, three more questions appear below.</span>
           </div>
+          <fieldset class="sub" id="pb-ai-detail" hidden>
+            <legend>AI-supported: what is allowed?</legend>
+            <p class="hint">&ldquo;AI-supported&rdquo; alone does not tell a student where the line is. Name the uses you allow and the use you do not.</p>
+            <div class="checks" role="group" aria-labelledby="pb-uses-h">
+              <span class="group-label" id="pb-uses-h">Students may use AI for</span>
+              <label><input type="checkbox" name="pb-use" value="brainstorming topic ideas"> Brainstorming topic ideas</label>
+              <label><input type="checkbox" name="pb-use" value="making an outline"> Making an outline</label>
+              <label><input type="checkbox" name="pb-use" value="explaining a reading, a word, or an idea"> Explaining a reading, a word, or an idea</label>
+              <label><input type="checkbox" name="pb-use" value="getting feedback on a draft you wrote"> Getting feedback on a draft they wrote</label>
+              <label><input type="checkbox" name="pb-use" value="making practice questions to study"> Making practice questions to study</label>
+            </div>
+            <div class="field"><label for="pb-use-other">Other allowed uses</label><span class="hint" id="pb-use-other-h">Separate each use with a semicolon.</span><input id="pb-use-other" type="text" aria-describedby="pb-use-other-h" autocomplete="off"></div>
+            <div class="field"><label for="pb-ai-limit">Students may not use AI to</label><span class="hint" id="pb-ai-limit-h">Edit this to match your assignment.</span><input id="pb-ai-limit" type="text" value="write sentences or paragraphs that you turn in" aria-describedby="pb-ai-limit-h" autocomplete="off"></div>
+            <div class="checks">
+              <label><input type="checkbox" id="pb-disclose"> Ask students to add a sentence that says how they used AI</label>
+            </div>
+          </fieldset>
           <div class="field"><label for="pb-may">Language tools students may use</label><span class="hint" id="pb-may-h">An AI level does not tell students whether a dictionary, a translation tool, or a grammar checker is allowed. Say so here.</span><input id="pb-may" type="text" aria-describedby="pb-may-h" autocomplete="off"></div>
           <div class="field"><label for="pb-maynot">Language tools students may not use</label><span class="hint" id="pb-maynot-h">Example: a translation tool for whole paragraphs</span><input id="pb-maynot" type="text" aria-describedby="pb-maynot-h" autocomplete="off"></div>
           <div class="field"><label for="pb-submit">Where students submit and find the due date</label><input id="pb-submit" type="text" value="Blackboard" autocomplete="off"></div>
@@ -137,6 +155,7 @@ Step 1. List what a student could not tell from this prompt. Check each of these
 - what is optional
 - how the work is graded, including how much grammar counts
 - the AI level (No AI, AI-supported, or AI-integrated)
+- if the level is AI-supported, exactly which uses are allowed and which are not
 - which language tools are allowed (dictionary, translation tool, grammar checker)
 - where to submit the work and where to find the due date
 
@@ -169,7 +188,7 @@ Ask about each of these, in this order:
 6. each requirement, with a number (length in words, number of sources, format)
 7. what is optional
 8. what counts most in the grade, and how much grammar and word choice count
-9. the AI level (No AI, AI-supported, or AI-integrated)
+9. the AI level (No AI, AI-supported, or AI-integrated). If I answer AI-supported, ask which uses are allowed (for example, brainstorming or feedback on a draft) and which are not
 10. which language tools are allowed (dictionary, translation tool, grammar checker)
 11. where students submit the work and find the due date
 
@@ -209,6 +228,6 @@ Start with question 1.</pre>
     <p class="eeo">The Kentucky Community and Technical College System is an equal educational and employment opportunity institution and does not discriminate on the basis of race, religion, color, sex, gender identity, gender presentation, national origin, age, disability, family medical history, or genetic information. Further, we vigilantly prevent discrimination based on sexual orientation, parental status, marital status, political affiliation, military service, or any other non-merit based factor.</p>
   </div>
 </footer>
-<script src="../js/site.js?v=6"></script>
+<script src="../js/site.js?v=7"></script>
 </body>
 </html>

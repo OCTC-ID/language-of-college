@@ -57,6 +57,12 @@
     var grade = val('pb-grade'), lang = val('pb-lang');
     var ai = val('pb-ai'), may = val('pb-may'), maynot = val('pb-maynot'), submit = val('pb-submit');
 
+    var supported = ai.indexOf('AI-supported') === 0;
+    var uses = [];
+    form.querySelectorAll('input[name="pb-use"]:checked').forEach(function (c) { uses.push(c.value); });
+    val('pb-use-other').split(';').forEach(function (u) { u = u.trim().replace(/[.]$/, ''); if (u) { uses.push(lower(u)); } });
+    var limit = val('pb-ai-limit');
+
     if (title) { parts.push(title); }
 
     if (skill) {
@@ -92,13 +98,23 @@
 
     if (ai || may || maynot) {
       var tools = [];
-      if (ai) { tools.push('AI level: ' + ai + ' See the AI Course Policy in the syllabus.'); }
+      if (ai) {
+        tools.push('AI level: ' + ai);
+        if (supported) {
+          if (uses.length) { tools.push('You may use AI for:\n' + uses.map(function (u) { return '- ' + u; }).join('\n')); }
+          if (limit) { tools.push('You may not use AI to ' + sentence(limit)); }
+          if (document.getElementById('pb-disclose').checked) { tools.push('At the end of your work, add one or two sentences that say how you used AI.'); }
+        }
+        tools.push('See the AI Course Policy in the syllabus.');
+      }
       if (may) { tools.push('You may use ' + sentence(lower(may))); }
       if (maynot) { tools.push('You may not use ' + sentence(lower(maynot))); }
       tools.push('If you are not sure whether a tool is allowed, ask me before you use it.');
-      parts.push('Tools\n' + tools.join(' '));
+      parts.push('Tools\n' + tools.join('\n'));
     }
     if (!ai) { missing.push('the AI level (No AI, AI-supported, or AI-integrated)'); }
+    if (supported && !uses.length) { missing.push('which uses of AI are allowed (AI-supported does not say)'); }
+    if (supported && !limit) { missing.push('which use of AI is not allowed'); }
     if (!may && !maynot) { missing.push('which language tools are allowed (dictionary, translation tool, grammar checker)'); }
 
     if (submit) { parts.push('Submitting\nSubmit your work in ' + submit + ' by the due date listed there.'); }
@@ -126,5 +142,12 @@
     out.focus();
   });
 
-  form.addEventListener('reset', function () { out.hidden = true; });
+  // Show the extra AI questions only when AI-supported is chosen.
+  var aiSelect = document.getElementById('pb-ai');
+  var aiDetail = document.getElementById('pb-ai-detail');
+  function showDetail() { aiDetail.hidden = aiSelect.value.indexOf('AI-supported') !== 0; }
+  aiSelect.addEventListener('change', showDetail);
+  showDetail();
+
+  form.addEventListener('reset', function () { out.hidden = true; aiDetail.hidden = true; });
 })();

@@ -27,7 +27,7 @@ import re
 import sys
 from pathlib import Path
 
-V = 8
+V = 9
 SITE = "The Language of College"
 SUBTITLE = "A Reading, Writing &amp; Communication Toolkit"
 ROOT = Path(__file__).resolve().parent.parent

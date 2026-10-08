@@ -41,7 +41,7 @@
               <option value="AI-supported. You can use AI for specific parts of the work, but the thinking and the final product are yours.">AI-supported: AI for specific parts; the thinking and final product are theirs</option>
               <option value="AI-integrated. Learning to use AI well is part of this assignment.">AI-integrated: learning to use AI well is part of the assignment</option>
             </select>
-            <span class="hint">If you choose AI-supported, three more questions appear below.</span>
+            <span class="hint">If you choose AI-supported or AI-integrated, more questions appear below.</span>
           </div>
           <fieldset class="sub" id="pb-ai-detail" hidden>
             <legend>AI-supported: what is allowed?</legend>
@@ -59,6 +59,14 @@
             <div class="checks">
               <label><input type="checkbox" id="pb-disclose"> Ask students to add a sentence that says how they used AI</label>
             </div>
+          </fieldset>
+          <fieldset class="sub" id="pb-ai-int" hidden>
+            <legend>AI-integrated: how will students use AI?</legend>
+            <p class="hint">When AI is part of the assignment, students need the steps, their own part of the work, and what to turn in.</p>
+            <div class="field"><label for="pb-int-tool">Which AI tool will students use?</label><input id="pb-int-tool" type="text" value="Microsoft Copilot, signed in with your college account" autocomplete="off"></div>
+            <div class="field"><label for="pb-int-steps">What will students do with AI?</label><span class="hint" id="pb-int-steps-h">One step per line, or say where the steps are. Example: Ask Copilot for three arguments against your thesis.</span><textarea id="pb-int-steps" rows="3" aria-describedby="pb-int-steps-h"></textarea></div>
+            <div class="field"><label for="pb-int-own">What must students do themselves?</label><span class="hint" id="pb-int-own-h">One per line. Example: Choose the strongest argument and answer it in your own words.</span><textarea id="pb-int-own" rows="2" aria-describedby="pb-int-own-h"></textarea></div>
+            <div class="field"><label for="pb-int-show">What do students turn in to show how they used AI?</label><span class="hint" id="pb-int-show-h">Example: your prompts, and three sentences about what you kept, changed, and left out</span><input id="pb-int-show" type="text" aria-describedby="pb-int-show-h" autocomplete="off"></div>
           </fieldset>
           <div class="field"><label for="pb-may">Language tools students may use</label><span class="hint" id="pb-may-h">An AI level does not tell students whether a dictionary, a translation tool, or a grammar checker is allowed. Say so here.</span><input id="pb-may" type="text" aria-describedby="pb-may-h" autocomplete="off"></div>
           <div class="field"><label for="pb-maynot">Language tools students may not use</label><span class="hint" id="pb-maynot-h">Example: a translation tool for whole paragraphs</span><input id="pb-maynot" type="text" aria-describedby="pb-maynot-h" autocomplete="off"></div>
@@ -97,6 +105,7 @@ Step 1. List what a student could not tell from this prompt. Check each of these
 - how the work is graded, including how much grammar counts
 - the AI level (No AI, AI-supported, or AI-integrated)
 - if the level is AI-supported, exactly which uses are allowed and which are not
+- if the level is AI-integrated, the tool, the steps for using AI, what students must do themselves, and what they turn in to show how they used AI
 - which language tools are allowed (dictionary, translation tool, grammar checker)
 - where to submit the work and where to find the due date
 
@@ -129,7 +138,7 @@ Ask about each of these, in this order:
 6. each requirement, with a number (length in words, number of sources, format)
 7. what is optional
 8. what counts most in the grade, and how much grammar and word choice count
-9. the AI level (No AI, AI-supported, or AI-integrated). If I answer AI-supported, ask which uses are allowed (for example, brainstorming or feedback on a draft) and which are not
+9. the AI level (No AI, AI-supported, or AI-integrated). If I answer AI-supported, ask which uses are allowed (for example, brainstorming or feedback on a draft) and which are not. If I answer AI-integrated, ask which tool students use, what they do with AI, what they must do themselves, and what they turn in to show how they used AI
 10. which language tools are allowed (dictionary, translation tool, grammar checker)
 11. where students submit the work and find the due date
 

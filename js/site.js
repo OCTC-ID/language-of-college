@@ -62,6 +62,8 @@
     form.querySelectorAll('input[name="pb-use"]:checked').forEach(function (c) { uses.push(c.value); });
     val('pb-use-other').split(';').forEach(function (u) { u = u.trim().replace(/[.]$/, ''); if (u) { uses.push(lower(u)); } });
     var limit = val('pb-ai-limit');
+    var integrated = ai.indexOf('AI-integrated') === 0;
+    var intTool = val('pb-int-tool'), intSteps = lines('pb-int-steps'), intOwn = lines('pb-int-own'), intShow = val('pb-int-show');
 
     if (title) { parts.push(title); }
 
@@ -105,6 +107,13 @@
           if (limit) { tools.push('You may not use AI to ' + sentence(limit)); }
           if (document.getElementById('pb-disclose').checked) { tools.push('At the end of your work, add one or two sentences that say how you used AI.'); }
         }
+        if (integrated) {
+          if (intTool) { tools.push('Use ' + sentence(intTool)); }
+          if (intSteps.length) { tools.push('With AI, you will:\n' + intSteps.map(function (u) { return '- ' + u; }).join('\n')); }
+          if (intOwn.length) { tools.push('On your own, you must:\n' + intOwn.map(function (u) { return '- ' + u; }).join('\n')); }
+          if (intShow) { tools.push('To show how you used AI, turn in ' + sentence(lower(intShow))); }
+          tools.push('Do not paste personal information, yours or anyone else\u2019s, into an AI tool.');
+        }
         tools.push('See the AI Course Policy in the syllabus.');
       }
       if (may) { tools.push('You may use ' + sentence(lower(may))); }
@@ -115,6 +124,9 @@
     if (!ai) { missing.push('the AI level (No AI, AI-supported, or AI-integrated)'); }
     if (supported && !uses.length) { missing.push('which uses of AI are allowed (AI-supported does not say)'); }
     if (supported && !limit) { missing.push('which use of AI is not allowed'); }
+    if (integrated && !intSteps.length) { missing.push('the steps for using AI'); }
+    if (integrated && !intOwn.length) { missing.push('what students must do themselves'); }
+    if (integrated && !intShow) { missing.push('what students turn in to show how they used AI'); }
     if (!may && !maynot) { missing.push('which language tools are allowed (dictionary, translation tool, grammar checker)'); }
 
     if (submit) { parts.push('Submitting\nSubmit your work in ' + submit + ' by the due date listed there.'); }
@@ -145,9 +157,13 @@
   // Show the extra AI questions only when AI-supported is chosen.
   var aiSelect = document.getElementById('pb-ai');
   var aiDetail = document.getElementById('pb-ai-detail');
-  function showDetail() { aiDetail.hidden = aiSelect.value.indexOf('AI-supported') !== 0; }
+  var aiInt = document.getElementById('pb-ai-int');
+  function showDetail() {
+    aiDetail.hidden = aiSelect.value.indexOf('AI-supported') !== 0;
+    aiInt.hidden = aiSelect.value.indexOf('AI-integrated') !== 0;
+  }
   aiSelect.addEventListener('change', showDetail);
   showDetail();
 
-  form.addEventListener('reset', function () { out.hidden = true; aiDetail.hidden = true; });
+  form.addEventListener('reset', function () { out.hidden = true; aiDetail.hidden = true; aiInt.hidden = true; });
 })();

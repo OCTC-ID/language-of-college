@@ -70,7 +70,7 @@ def page_body(key, epub):
         note.string = ("The fill-in builder works on the website. Open this page online to use it: "
                        + SITE_URL + build.PATHS[key])
         form.replace_with(note)
-    for el in soup.select("#pb-out, noscript, .actions"):
+    for el in soup.select("#pb-out, noscript, .actions, .scroll-hint"):
         el.decompose()
 
     # Answers are always shown.

@@ -27,7 +27,7 @@ import re
 import sys
 from pathlib import Path
 
-V = 10
+V = 11
 SITE = "The Language of College"
 SUBTITLE = "A Reading, Writing &amp; Communication Toolkit"
 ROOT = Path(__file__).resolve().parent.parent
@@ -49,8 +49,8 @@ SECTIONS = [
     ]),
     ("assignments", "Understand the assignment", "Know what an assignment asks before you start.", [
         ("writing-prompt", "Understanding a writing prompt", "assignments/writing-prompt.html"),
-        ("task-verbs", "Task verbs: analyze, compare, evaluate", None),
-        ("rubric", "Reading a rubric", None),
+        ("task-verbs", "Task verbs: analyze, compare, evaluate", "assignments/task-verbs.html"),
+        ("rubric", "Reading a rubric", "assignments/rubric.html"),
     ]),
     ("participate", "Take part in class", "Join discussions and reflect on your learning.", [
         ("discussion-post", "Writing a discussion post", "participate/discussion-post.html"),
@@ -92,7 +92,7 @@ INSTRUCTOR = ("instructors", "Instructor Companion", "", [
     ("assignment-prompts", "Writing a clear assignment prompt", "instructors/assignment-prompts.html"),
     ("discussions-journals", "Setting expectations for discussions and journals", "instructors/discussions-journals.html"),
     ("prompt-builder", "Tool: Assignment prompt builder", "instructors/prompt-builder.html"),
-    ("rubrics-language", "Rubrics and where language accuracy fits", None),
+    ("rubrics-language", "Rubrics and where language accuracy fits", "instructors/rubrics-language.html"),
     ("actionable-feedback", "Focused, actionable feedback", None),
     ("tool-expectations", "Setting expectations for translation, grammar tools, and AI", None),
     ("process-authorship", "Talking about writing process and authorship", None),
@@ -148,6 +148,27 @@ PAGES.update({
         when="you are not sure whether a noun needs <span translate=\"no\">a</span>, <span translate=\"no\">an</span>, <span translate=\"no\">the</span>, or no article.",
         meta="About 12 minutes. Includes practice with answers.",
         desc="How to choose a, an, the, or no article in college writing, with three questions to ask, common problems with uncountable nouns, and practice.",
+    ),
+})
+
+PAGES.update({
+    "task-verbs": dict(
+        h1="Task Verbs: Analyze, Compare, Evaluate",
+        when="a prompt uses a verb such as <span translate=\"no\">analyze</span> or <span translate=\"no\">evaluate</span>, and you are not sure what it asks you to do.",
+        meta="About 12 minutes. Includes practice with answers.",
+        desc="What common task verbs in college assignments ask you to do, in three groups, with one article answered three ways and language for comparing and judging.",
+    ),
+    "rubric": dict(
+        h1="Reading a Rubric",
+        when="your instructor gives you a rubric, and you want to know how your work will be graded.",
+        meta="About 10 minutes. Includes practice with answers.",
+        desc="How to read a college grading rubric: criteria, levels, and points, with an annotated example and the small words that separate one level from the next.",
+    ),
+    "rubrics-language": dict(
+        h1="Rubrics and Where Language Accuracy Fits",
+        when="you are building or revising a rubric, or deciding how much grammar should count.",
+        meta="About 8 minutes. Includes wording you can copy.",
+        desc="How to decide what language accuracy is worth in a rubric, six practices, a before-and-after language row, and wording to copy.",
     ),
 })
 

@@ -335,3 +335,18 @@ footer .eeo { margin: 12px 0 0; font-size: .8rem; line-height: 1.55; max-width: 
 /* Home hero: small note under the lead */
 .hero .lead { max-width: 60ch; }
 .hero-note { display: inline-block; margin: 18px 0 0; font-size: .86rem; font-weight: 700; color: #fff; border: 1.5px solid rgba(255,255,255,.65); border-radius: 999px; padding: 3px 14px; }
+
+/* Example rubric inside an annotated figure */
+.annotated .ex .table-wrap { margin: 0 0 12px; }
+.rubric-ex { font-size: .92rem; }
+.rubric-ex tbody th { width: 9.5em; }
+.rubric-ex th .ref, .rubric-ex td .ref { vertical-align: 1px; }
+thead th a.ref { background: var(--gold); color: var(--navy); }
+.ba .body > p { margin: 0 0 .5em; }
+.scroll-hint { display: none; font-size: .86rem; color: var(--muted); margin: 0 0 8px; }
+@media (max-width: 700px) {
+  .scroll-hint { display: block; }
+  .rubric-ex { min-width: 600px; }
+  .annotated .ex .table-wrap { border: 1px solid var(--border); border-radius: 8px; }
+}
+@media print { .scroll-hint { display: none !important; } }

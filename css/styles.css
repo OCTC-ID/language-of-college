@@ -292,3 +292,17 @@ footer .eeo { margin: 12px 0 0; font-size: .8rem; line-height: 1.55; max-width: 
 .ba figure > figcaption { border-bottom: 1px solid var(--border); }
 @media (max-width: 560px) { .tool-form .pair { grid-template-columns: 1fr; } .tool-form fieldset { padding: 12px 14px 16px; } }
 @media print { .tool-form, .actions { display: none !important; } }
+
+/* ---------- Home: color bands and tinted tiles ---------- */
+.band.tint { background: var(--soft-blue); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.home { padding: 44px 16px; }
+.home section { margin-top: 0; }
+.band:last-of-type .home { padding-bottom: 64px; }
+.how li { background: var(--soft-blue); border-color: #c9dcf0; border-top-color: var(--bright); }
+.toc > li { padding: 0; overflow: hidden; border-color: #c9dcf0; box-shadow: 0 6px 14px -12px rgba(1,29,65,.45); }
+.toc .tile-head { background: var(--blue); color: #fff; padding: 12px 20px 13px; border-bottom: 4px solid var(--gold); }
+.toc .tile-head h3 { color: #fff; margin: 0; }
+.toc .tile-head .goal { color: #d6e6f5; margin: 2px 0 0; }
+.toc > li > ul { border-top: 0; padding: 12px 20px 16px; }
+.toc ul li.live a::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); margin-right: 8px; vertical-align: 1px; }
+@media print { .band.tint { background: none; border: 0; } .toc .tile-head { background: none; border-bottom: 1px solid var(--ink); } .toc .tile-head h3, .toc .tile-head .goal { color: var(--ink); } }

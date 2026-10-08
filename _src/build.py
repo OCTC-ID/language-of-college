@@ -27,7 +27,7 @@ import re
 import sys
 from pathlib import Path
 
-V = 3
+V = 4
 SITE = "The Language of College"
 SUBTITLE = "A Reading, Writing &amp; Communication Toolkit"
 ROOT = Path(__file__).resolve().parent.parent
@@ -293,7 +293,7 @@ def toc_items(section, page_path, mode):
     out = []
     for key, title, path in section[3]:
         if path:
-            out.append(f'<li><a href="{mode.url(key, page_path)}">{esc(title)}</a></li>')
+            out.append(f'<li class="live"><a href="{mode.url(key, page_path)}">{esc(title)}</a></li>')
         else:
             out.append(f'<li><span class="pg">{esc(title)} <span class="soon">Coming soon</span></span></li>')
     return "\n          ".join(out)
@@ -303,8 +303,10 @@ def build_home(mode):
     p = "index.html"
     cards = "\n".join(
         f"""      <li id="{sid}">
-        <h3>{esc(title)}</h3>
-        <p class="goal">{esc(goal)}</p>
+        <div class="tile-head">
+          <h3>{esc(title)}</h3>
+          <p class="goal">{esc(goal)}</p>
+        </div>
         <ul>
           {toc_items((sid, title, goal, pages), p, mode)}
         </ul>

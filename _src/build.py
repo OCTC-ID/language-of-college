@@ -30,7 +30,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import semester  # noqa: E402  (current-term information; edit _src/semester.py each term)
 
-V = 12
+V = 13
 SITE = "The Language of College"
 SUBTITLE = "A Reading, Writing &amp; Communication Toolkit"
 ROOT = Path(__file__).resolve().parent.parent
@@ -364,6 +364,7 @@ def semester_card(mode, page_path):
   <section class="term-card" aria-labelledby="term-h">
     <p class="term-badge">This semester <span>{esc(semester.TERM)}</span></p>
     <h2 id="term-h">{esc(semester.PERSON)} in the {esc(semester.PLACE)}</h2>
+    <p class="term-what">{esc(semester.HELPS_WITH)}</p>
     <ul>{items}</ul>
     <p class="term-more"><a href="{mode.url('semester', page_path)}">See the details for {esc(semester.TERM)}</a> <span class="term-updated">Updated {esc(semester.UPDATED)}</span></p>
   </section>
@@ -393,6 +394,7 @@ def build_semester(mode):
     <section id="help">
       <h2>In-person help in the {esc(semester.PLACE)}</h2>
       <p>{esc(semester.PERSON)} works in the {esc(semester.PLACE)} (TLC) at these times in {esc(semester.TERM)}.</p>
+      <p>{esc(semester.ABOUT)}</p>
       <div class="table-wrap">
         <table class="term-table">
           <caption>{esc(semester.PERSON)}, {esc(semester.TERM)}</caption>

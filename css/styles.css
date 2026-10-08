@@ -372,3 +372,4 @@ thead th a.ref { background: var(--gold); color: var(--navy); }
 .term-more { margin: 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 18px; }
 .term-more a { font-weight: 800; }
 @media print { .band.term { background: none; } }
+.term-what { margin: -4px 0 10px; color: var(--blue); font-weight: 700; }

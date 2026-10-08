@@ -1,0 +1,143 @@
+    <section id="build" data-nav="Build a prompt">
+      <h2>Build a prompt</h2>
+      <p>Fill in what you know, then choose <strong>Build prompt</strong>. The tool assembles your answers under clear headings and lists anything a student could not tell from the prompt. Copy the result into Blackboard and edit it there.</p>
+      <form class="tool-form wide" id="pb-form" novalidate>
+        <fieldset>
+          <legend>Purpose</legend>
+          <div class="field"><label for="pb-title">Assignment title</label><input id="pb-title" type="text" autocomplete="off"></div>
+          <div class="field"><label for="pb-skill">What skill does this assignment build?</label><span class="hint" id="pb-skill-h">Example: building an argument for a specific reader</span><input id="pb-skill" type="text" aria-describedby="pb-skill-h" autocomplete="off"></div>
+          <div class="field"><label for="pb-use">Where will students use this skill again?</label><span class="hint" id="pb-use-h">Example: in other courses and at work</span><input id="pb-use" type="text" aria-describedby="pb-use-h" autocomplete="off"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Task</legend>
+          <div class="pair">
+            <div class="field"><label for="pb-type">Type of text</label><span class="hint" id="pb-type-h">Example: essay, discussion post, lab report</span><input id="pb-type" type="text" aria-describedby="pb-type-h" autocomplete="off"></div>
+            <div class="field"><label for="pb-verb">Task verb</label><span class="hint" id="pb-verb-h">Example: argues, compares, summarizes</span><input id="pb-verb" type="text" aria-describedby="pb-verb-h" autocomplete="off"></div>
+          </div>
+          <div class="field"><label for="pb-topic">Topic and its limits</label><span class="hint" id="pb-topic-h">This completes the sentence &ldquo;Write a [type] that [verb]&nbsp;&hellip;&rdquo;</span><textarea id="pb-topic" rows="2" aria-describedby="pb-topic-h"></textarea></div>
+          <div class="field"><label for="pb-def">What does the task verb mean in your course?</label><span class="hint" id="pb-def-h">Example: to state a position and support it with reasons and evidence</span><input id="pb-def" type="text" aria-describedby="pb-def-h" autocomplete="off"></div>
+          <div class="field"><label for="pb-reader">Who is the reader?</label><span class="hint" id="pb-reader-h">Example: the people who could make the change</span><input id="pb-reader" type="text" aria-describedby="pb-reader-h" autocomplete="off"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Requirements</legend>
+          <div class="field"><label for="pb-req">Required</label><span class="hint" id="pb-req-h">One per line, each with a number where one applies. Give length in words.</span><textarea id="pb-req" rows="4" aria-describedby="pb-req-h"></textarea></div>
+          <div class="field"><label for="pb-opt">Optional</label><span class="hint" id="pb-opt-h">One per line. Example: You may write in first person (I, my).</span><textarea id="pb-opt" rows="2" aria-describedby="pb-opt-h"></textarea></div>
+        </fieldset>
+        <fieldset>
+          <legend>Grading and tools</legend>
+          <div class="field"><label for="pb-grade">What counts most in the grade?</label><span class="hint" id="pb-grade-h">Example: your argument and your evidence</span><input id="pb-grade" type="text" aria-describedby="pb-grade-h" autocomplete="off"></div>
+          <div class="field"><label for="pb-lang">How do grammar and word choice count?</label>
+            <select id="pb-lang">
+              <option value="">Choose one</option>
+              <option value="Grammar and word choice are not graded unless they make your meaning unclear.">Not graded unless meaning is unclear</option>
+              <option value="Grammar and word choice count as shown in the rubric.">Count as shown in the rubric</option>
+              <option value="Grammar and word choice are not graded in this assignment.">Not graded</option>
+            </select>
+          </div>
+          <div class="field"><label for="pb-ai">AI level for this assignment</label><span class="hint" id="pb-ai-h">These are the three levels from OCTC&rsquo;s <a href="https://octc-id.github.io/AI-literacy-playbook/ai-label/" target="_blank" rel="noopener">AI Label Maker<span class="sr-only"> (opens in a new tab)</span></a>. Use it to make the formatted label for Blackboard.</span>
+            <select id="pb-ai" aria-describedby="pb-ai-h">
+              <option value="">Choose one</option>
+              <option value="No AI. You complete this work on your own.">No AI: students complete the work on their own</option>
+              <option value="AI-supported. You can use AI for specific parts of the work, but the thinking and the final product are yours.">AI-supported: AI for specific parts; the thinking and final product are theirs</option>
+              <option value="AI-integrated. Learning to use AI well is part of this assignment.">AI-integrated: learning to use AI well is part of the assignment</option>
+            </select>
+          </div>
+          <div class="field"><label for="pb-may">Language tools students may use</label><span class="hint" id="pb-may-h">An AI level does not tell students whether a dictionary, a translation tool, or a grammar checker is allowed. Say so here.</span><input id="pb-may" type="text" aria-describedby="pb-may-h" autocomplete="off"></div>
+          <div class="field"><label for="pb-maynot">Language tools students may not use</label><span class="hint" id="pb-maynot-h">Example: a translation tool for whole paragraphs</span><input id="pb-maynot" type="text" aria-describedby="pb-maynot-h" autocomplete="off"></div>
+          <div class="field"><label for="pb-submit">Where students submit and find the due date</label><input id="pb-submit" type="text" value="Blackboard" autocomplete="off"></div>
+        </fieldset>
+        <div class="actions">
+          <button type="submit" class="btn">Build prompt</button>
+          <button type="reset" class="btn-plain">Clear the form</button>
+        </div>
+      </form>
+
+      <div class="tool-out wide" id="pb-out" tabindex="-1" hidden>
+        <h3>Your prompt</h3>
+        <div id="pb-missing"></div>
+        <pre id="pb-text" translate="no"></pre>
+        <div class="actions">
+          <button type="button" class="btn" data-copy="pb-text">Copy prompt</button>
+          <span class="copied" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+      <noscript><p class="note note-tip">This tool needs JavaScript. Without it, use the wording on <a href="{{url:assignment-prompts}}#copy">Writing a clear assignment prompt</a>.</p></noscript>
+    </section>
+
+    <section id="ai" data-nav="Check a prompt with Copilot">
+      <h2>Check a prompt with Copilot</h2>
+      <p>If you already have a prompt, Microsoft Copilot can read it the way a careful student would and show you what is missing. Copilot is part of the college&rsquo;s Microsoft 365 package. Copy the text below into Copilot, then paste your own prompt at the end.</p>
+      <div class="tool-out wide">
+        <pre id="ai-text" translate="no">You are helping a college instructor revise an assignment prompt so that every student can understand it, including students who read English as an additional language. Do not change what the assignment asks students to do. Do not make the assignment easier.
+
+Step 1. List what a student could not tell from this prompt. Check each of these:
+- the task and its main verb
+- the topic and its limits
+- the intended reader
+- each requirement, and its number
+- what is optional
+- how the work is graded, including how much grammar counts
+- the AI level (No AI, AI-supported, or AI-integrated)
+- which language tools are allowed (dictionary, translation tool, grammar checker)
+- where to submit the work and where to find the due date
+
+Step 2. List every idiom, cultural reference, and undefined academic term in the prompt. Suggest plain wording for each one.
+
+Step 3. List any requirement that is worded as a suggestion, such as "you might want to."
+
+Step 4. Rewrite the prompt under these headings: Purpose, Task, Reader, Requirements, Optional, Grading, Tools. Use short sentences and common words. Use "must" for requirements. Where information is missing, write [INSTRUCTOR: add ...]. Do not invent requirements, numbers, or policies.
+
+Here is my prompt:
+[paste your prompt here]</pre>
+        <div class="actions">
+          <button type="button" class="btn" data-copy="ai-text">Copy Copilot prompt</button>
+          <span class="copied" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+      <h3>Or start from scratch with Copilot</h3>
+      <p>If you do not have a prompt yet and prefer a conversation to a form, use this version. Copilot asks you one question at a time and writes the prompt when you say &ldquo;ready.&rdquo; Allow five to ten minutes.</p>
+      <div class="tool-out wide">
+        <pre id="ai2-text" translate="no">You are helping a college instructor write a clear assignment prompt that every student can understand, including students who read English as an additional language.
+
+Interview me one question at a time. Wait for my answer before you ask the next question. Do not draft anything until I say "ready."
+
+Ask about each of these, in this order:
+1. the skill this assignment builds, and where students will use it again
+2. the type of text and the task, named with one verb
+3. what that verb means in my course
+4. the topic and its limits
+5. the intended reader
+6. each requirement, with a number (length in words, number of sources, format)
+7. what is optional
+8. what counts most in the grade, and how much grammar and word choice count
+9. the AI level (No AI, AI-supported, or AI-integrated)
+10. which language tools are allowed (dictionary, translation tool, grammar checker)
+11. where students submit the work and find the due date
+
+If my answer is vague, ask one follow-up question. If I say "skip," move on.
+
+When I say "ready," write the prompt under these headings: Purpose, Task, Reader, Requirements, Optional, Grading, Tools, Submitting. Use short sentences and common words. Do not use idioms. Use "must" for requirements. For anything I skipped, write [INSTRUCTOR: add ...]. Do not invent requirements, numbers, or college policies.
+
+Start with question 1.</pre>
+        <div class="actions">
+          <button type="button" class="btn" data-copy="ai2-text">Copy interview prompt</button>
+          <span class="copied" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+      <h3>Before you use either prompt</h3>
+      <ul>
+        <li><strong>Sign in to Copilot with your college account.</strong> For the college&rsquo;s approach to AI in courses, see the <a href="https://octc-id.github.io/AI-literacy-playbook/" target="_blank" rel="noopener">AI Literacy Faculty Playbook<span class="sr-only"> (opens in a new tab)</span></a>.</li>
+        <li><strong>Share only the assignment.</strong> Leave out student names and student work.</li>
+        <li><strong>Read the result against your original.</strong> Copilot can change your meaning while it simplifies your wording. The bracketed notes mark places where it needed information from you.</li>
+        <li><strong>You make the decisions.</strong> The tool finds gaps. What the assignment requires is up to you.</li>
+      </ul>
+    </section>
+
+    <section id="related" data-nav="Related pages">
+      <h2>Related pages</h2>
+      <ul class="related">
+        <li><a href="{{url:assignment-prompts}}">Writing a clear assignment prompt</a><span class="desc">The six practices behind this tool, with a before-and-after example.</span></li>
+        <li><a href="{{url:discussions-journals}}">Setting expectations for discussions and journals</a><span class="desc">What to add when the assignment is a discussion or a journal.</span></li>
+        <li><span class="tag">For students</span><a href="{{url:writing-prompt}}">Understanding a writing prompt</a><span class="desc">The student page that teaches how to read the prompt you write.</span></li>
+      </ul>
+    </section>

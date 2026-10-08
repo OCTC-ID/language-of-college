@@ -27,7 +27,10 @@ import re
 import sys
 from pathlib import Path
 
-V = 11
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import semester  # noqa: E402  (current-term information; edit _src/semester.py each term)
+
+V = 12
 SITE = "The Language of College"
 SUBTITLE = "A Reading, Writing &amp; Communication Toolkit"
 ROOT = Path(__file__).resolve().parent.parent
@@ -172,7 +175,7 @@ PAGES.update({
     ),
 })
 
-PATHS = {"home": "index.html"}
+PATHS = {"home": "index.html", "semester": "this-semester/index.html"}
 for _sec in SECTIONS + [INSTRUCTOR]:
     for _key, _title, _path in _sec[3]:
         if _path:
@@ -239,6 +242,7 @@ def bar(page_path, mode):
       <span class="sr-only">Home</span>
     </a>
     <nav class="bar-nav" aria-label="Site">
+      <a href="{mode.url('semester', page_path)}">This semester</a>
       <a href="{mode.url('home#contents', page_path)}">Contents</a>
       <a class="pill" href="{mode.url('home#instructors', page_path)}">Instructor Companion</a>
     </nav>
@@ -341,6 +345,83 @@ def toc_items(section, page_path, mode):
     return "\n          ".join(out)
 
 
+def schedule_rows():
+    rows = []
+    for days, times in semester.SCHEDULE:
+        if times.startswith("DRAFT:"):
+            times = f'<span class="draft-flag">{esc(times[6:])}</span>'
+        else:
+            times = esc(times)
+        rows.append((esc(days), times))
+    return rows
+
+
+def semester_card(mode, page_path):
+    """The current-term box on the home page."""
+    items = "".join(f"<li><strong>{d}:</strong> {t}</li>" for d, t in schedule_rows())
+    return f"""<div class="band term">
+<div class="home">
+  <section class="term-card" aria-labelledby="term-h">
+    <p class="term-badge">This semester <span>{esc(semester.TERM)}</span></p>
+    <h2 id="term-h">{esc(semester.PERSON)} in the {esc(semester.PLACE)}</h2>
+    <ul>{items}</ul>
+    <p class="term-more"><a href="{mode.url('semester', page_path)}">See the details for {esc(semester.TERM)}</a> <span class="term-updated">Updated {esc(semester.UPDATED)}</span></p>
+  </section>
+</div>
+</div>"""
+
+
+def build_semester(mode):
+    p = PATHS["semester"]
+    rows = "".join(f'<tr><th scope="row">{d}</th><td>{t}</td></tr>' for d, t in schedule_rows())
+    tips = "".join(f"<li>{esc(t)}</li>" for t in semester.TIPS)
+    tips = f'<div class="note note-tip"><span class="label">Before you go</span><ul>{tips}</ul></div>' if tips else ""
+    desc = f"Current-term information for {semester.TERM}: when in-person help is available in the OCTC {semester.PLACE}."
+    return f"""{head(f"This Semester: {esc(semester.TERM)} | {SITE}", desc, p, mode)}
+<body class="student">
+{bar(p, mode)}
+<div class="shell solo">
+  <main class="reading" id="main">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="{mode.url('home', p)}">Home</a></li><li>This semester</li></ol></nav>
+    <div class="term-banner">
+      <p class="term-badge">Changes each term</p>
+      <h1>This Semester: {esc(semester.TERM)}</h1>
+      <p class="term-updated">Updated {esc(semester.UPDATED)}</p>
+      <p>The information on this page is for <strong>{esc(semester.TERM)}</strong> only. It changes every term. If the term in the title is not the current term, the times below may be wrong.</p>
+    </div>
+
+    <section id="help">
+      <h2>In-person help in the {esc(semester.PLACE)}</h2>
+      <p>{esc(semester.PERSON)} works in the {esc(semester.PLACE)} (TLC) at these times in {esc(semester.TERM)}.</p>
+      <div class="table-wrap">
+        <table class="term-table">
+          <caption>{esc(semester.PERSON)}, {esc(semester.TERM)}</caption>
+          <thead><tr><th scope="col">Days</th><th scope="col">Times</th></tr></thead>
+          <tbody>{rows}</tbody>
+        </table>
+      </div>
+      {tips}
+    </section>
+
+    <section id="tlc">
+      <h2>About the {esc(semester.PLACE)}</h2>
+      <p>The TLC is OCTC&rsquo;s academic support center. Tutoring is free for OCTC students.</p>
+      <ul>
+        <li><strong>Location, hours, and appointments:</strong> <a href="{semester.TLC_URL}" target="_blank" rel="noopener">OCTC Teaching and Learning Center<span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li><strong>Phone:</strong> {esc(semester.TLC_PHONE)}</li>
+        <li><strong>Email:</strong> <a href="mailto:{semester.TLC_EMAIL}">{esc(semester.TLC_EMAIL)}</a></li>
+      </ul>
+    </section>
+
+    <section id="link">
+      <h2>For instructors</h2>
+      <p>You can link students to this page. Its address stays the same every term, and the information is replaced when a new term begins.</p>
+    </section>
+  </main>
+</div>
+{foot(p, mode)}"""
+
+
 def build_home(mode):
     p = "index.html"
     cards = "\n".join(
@@ -355,6 +436,7 @@ def build_home(mode):
       </li>""" for sid, title, goal, pages in SECTIONS
     )
     body = fill((SRC / "home.html").read_text(), p, mode)
+    body = body.replace("<!--SEMESTER-->", semester_card(mode, p))
     body = body.replace("<!--TOC-->", cards).replace("<!--INSTRUCTOR-->", toc_items(INSTRUCTOR, p, mode))
     desc = "Short lessons for the reading, writing, and communication you do in college classes, with an Instructor Companion for faculty."
     return f"""{head(f"{SITE}: {SUBTITLE}", desc, p, mode)}
@@ -380,6 +462,7 @@ def main():
         print("built", out.relative_to(preview if preview else ROOT))
 
     write("home", build_home(mode))
+    write("semester", build_semester(mode))
     for section in SECTIONS:
         for key, _title, path in section[3]:
             if path:

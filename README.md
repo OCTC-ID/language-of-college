@@ -18,6 +18,7 @@ https://octc-id.github.io/language-of-college/assignments/writing-prompt.html
 
 ```
 index.html              Home: how to use the toolkit, contents, Instructor Companion
+this-semester/          Current-term information (built from _src/semester.py)
 css/styles.css          One stylesheet for every page
 js/site.js              Menu behavior, copy buttons, and the prompt builder
 images/                 OCTC logos and tab icons (from the official logo files)
@@ -40,6 +41,20 @@ downloads/              The PDF and EPUB (generated)
 5. **Links that leave the site open in a new tab,** with `target="_blank" rel="noopener"` and a screen-reader note.
 6. **Mark English example sentences with `translate="no"`** so browser translation leaves them in English.
 7. **After any change to `css/styles.css` or `js/site.js`,** raise `V` in `_src/build.py` and rebuild.
+
+## At the start of every term
+
+One page holds information that changes each term: who is working in the Teaching and Learning Center, and when. It appears in a gold box at the top of the home page and on its own page at `this-semester/`.
+
+All of it lives in one file: **`_src/semester.py`**. To update it:
+
+1. Open `_src/semester.py` and follow the checklist at the top (term, date, schedule rows).
+2. Run `python3 _src/build.py`.
+3. Commit and push.
+
+To mark a time you still need to confirm, start it with `DRAFT:`. It shows in a red dashed box until you replace it.
+
+This is the only page with dates on it. It is left out of the PDF and EPUB downloads on purpose, so an old download never shows an old schedule.
 
 ## Editing and building
 

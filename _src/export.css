@@ -47,3 +47,9 @@ body.epub table { font-size: .92em; }
 body.pdf .focus, body.pdf .annotated, body.pdf .practice, body.pdf .answer-open, body.pdf .ba figure { break-inside: auto; }
 body.pdf .notes li, body.pdf tr, body.pdf .starters li, body.pdf .five li, body.pdf .practices > li { break-inside: avoid; }
 body.pdf section { margin-top: 20pt; }
+body.pdf p.figcaption { margin: 0; }
+/* Tables that cross a page: repeat the header row, and never leave it alone at the bottom of a page */
+body.pdf thead { display: table-header-group; break-inside: avoid; break-after: avoid; }
+body.pdf caption { break-after: avoid; }
+body.pdf .table-wrap { break-before: auto; }
+body.pdf tbody tr:first-child { break-before: avoid; }

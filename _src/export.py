@@ -94,6 +94,15 @@ def page_body(key, epub):
 
     for h in soup.find_all("h2"):
         h["class"] = h.get("class", []) + ["sec"]
+    if not epub:
+        # A <figure> is tagged in the PDF as an image, and accessibility checkers then report an
+        # image with no description. These figures hold text, so tag them as plain blocks instead.
+        for fig in soup.find_all("figure"):
+            fig.name = "div"
+            fig["class"] = fig.get("class", []) + ["figure"]
+        for cap in soup.find_all("figcaption"):
+            cap.name = "p"
+            cap["class"] = cap.get("class", []) + ["figcaption"]
     if not epub:  # in the PDF, parts are h1 and pages are h2, so shift page headings down
         for old, new in (("h4", "h5"), ("h3", "h4"), ("h2", "h3")):
             for h in soup.find_all(old):
@@ -111,8 +120,12 @@ def page_head(key, title, part, instructor, level):
             f'<p class="online">Online: {SITE_URL}{build.PATHS[key]}</p>\n')
 
 
-def styles():
-    return (ROOT / "css/styles.css").read_text() + "\n" + (ROOT / "_src/export.css").read_text()
+def styles(pdf=False):
+    css = (ROOT / "css/styles.css").read_text() + "\n" + (ROOT / "_src/export.css").read_text()
+    if pdf:  # figures become div.figure and p.figcaption in the PDF (see page_body)
+        css = re.sub(r"(?<![.\w-])figcaption\b", ".figcaption", css)
+        css = re.sub(r"(?<![.\w-])figure\b", ".figure", css)
+    return css
 
 
 # ---------------------------------------------------------------- PDF
@@ -136,7 +149,7 @@ def build_pdf():
 <html lang="en"><head><meta charset="utf-8">
 <title>{build.esc(TITLE)}</title>
 <meta name="author" content="{build.esc(PUBLISHER)}">
-<style>{styles()}</style></head>
+<style>{styles(pdf=True)}</style></head>
 <body class="export pdf">
 <section class="cover">
   <img src="{logo}" alt="Owensboro Community &amp; Technical College">

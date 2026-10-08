@@ -2,7 +2,17 @@
 
 **A Reading, Writing & Communication Toolkit** for students at Owensboro Community & Technical College, with an Instructor Companion for faculty and staff.
 
+**Live site:** <https://octc-id.github.io/language-of-college/>
+
 Each page teaches one skill and can be linked directly from a course. Blackboard holds assignments, due dates, and grades. This site holds the lessons.
+
+To link students to one page, use its full address, for example:
+
+```
+https://octc-id.github.io/language-of-college/assignments/writing-prompt.html
+```
+
+> The repository name in the link is all lowercase, with hyphens.
 
 ## Structure
 

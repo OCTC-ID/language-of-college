@@ -175,8 +175,8 @@ details.answer li { margin-bottom: .7em; }
 .ba .after { border: 2px solid var(--yes); }
 .ba .after figcaption { background: var(--yes-soft); color: var(--yes); }
 .ba .body { padding: 14px 16px 6px; font-size: .96rem; }
-.ba .body h4 { margin: 12px 0 2px; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
-.ba .body h4:first-child { margin-top: 0; }
+.ba .body .ex-h { margin: 12px 0 2px; font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
+.ba .body .ex-h:first-child { margin-top: 0; }
 .practices { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 12px; counter-reset: p; }
 .practices > li { counter-increment: p; position: relative; margin: 0; padding: 14px 18px 14px 60px; border: 1px solid var(--border); border-radius: var(--radius); }
 .practices > li::before { content: counter(p); position: absolute; left: 18px; top: 15px; width: 28px; height: 28px; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 800; font-size: .9rem; display: grid; place-items: center; }

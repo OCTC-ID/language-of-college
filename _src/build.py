@@ -30,7 +30,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import semester  # noqa: E402  (current-term information; edit _src/semester.py each term)
 
-V = 14
+V = 16
 SITE = "The Language of College"
 SUBTITLE = "A Reading, Writing &amp; Communication Toolkit"
 ROOT = Path(__file__).resolve().parent.parent
@@ -83,6 +83,7 @@ SECTIONS = [
     ]),
     ("help", "Ask for help", "Ask questions in a clear, professional way.", [
         ("emailing-an-instructor", "Emailing an instructor and asking questions", None),
+        ("tutor", "Working with a tutor", "help/working-with-a-tutor.html"),
     ]),
     ("tools", "Tools and AI", "Use language tools and AI to learn, within your course rules.", [
         ("tools-check-rules", "Translation, grammar tools, and AI: check the rules first", None),
@@ -172,6 +173,15 @@ PAGES.update({
         when="you are building or revising a rubric, or deciding how much grammar should count.",
         meta="About 8 minutes. Includes wording you can copy.",
         desc="How to decide what language accuracy is worth in a rubric, six practices, a before-and-after language row, and wording to copy.",
+    ),
+})
+
+PAGES.update({
+    "tutor": dict(
+        h1="Working with a Tutor",
+        when="you are thinking about getting help from a tutor, or you are getting ready for your first session.",
+        meta="About 8 minutes. Includes practice with answers.",
+        desc="What a tutor does, when to go, what to bring, and what to say, with language for asking for exactly the help you need.",
     ),
 })
 
@@ -366,6 +376,7 @@ def semester_card(mode, page_path):
     <h2 id="term-h">{esc(semester.PERSON)} in the {esc(semester.PLACE)}</h2>
     <p class="term-what">{esc(semester.HELPS_WITH)}</p>
     <ul>{items}</ul>
+    <p class="term-where"><strong>Where:</strong> {esc(semester.LOCATION)}</p>
     <p class="term-more"><a href="{mode.url('semester', page_path)}">See the details for {esc(semester.TERM)}</a> <span class="term-updated">Updated {esc(semester.UPDATED)}</span></p>
   </section>
 </div>
@@ -403,13 +414,15 @@ def build_semester(mode):
         </table>
       </div>
       {tips}
+      <p>For what a tutor does and what to say in a session, read <a href="{mode.url('tutor', p)}">Working with a tutor</a>.</p>
     </section>
 
     <section id="tlc">
       <h2>About the {esc(semester.PLACE)}</h2>
-      <p>The TLC is OCTC&rsquo;s academic support center. Tutoring is free for OCTC students.</p>
+      <p>The TLC is OCTC&rsquo;s free academic support center. It offers tutoring and other services to help you succeed in your classes.</p>
+      <div class="note note-tip term-loc"><span class="label">Where to find it in {esc(semester.TERM)}</span><p>{esc(semester.LOCATION_NOTE)}</p></div>
       <ul>
-        <li><strong>Location, hours, and appointments:</strong> <a href="{semester.TLC_URL}" target="_blank" rel="noopener">OCTC Teaching and Learning Center<span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li><strong>Hours and appointments:</strong> <a href="{semester.TLC_URL}" target="_blank" rel="noopener">OCTC Teaching and Learning Center<span class="sr-only"> (opens in a new tab)</span></a></li>
         <li><strong>Phone:</strong> {esc(semester.TLC_PHONE)}</li>
         <li><strong>Email:</strong> <a href="mailto:{semester.TLC_EMAIL}">{esc(semester.TLC_EMAIL)}</a></li>
       </ul>

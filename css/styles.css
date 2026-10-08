@@ -373,3 +373,5 @@ thead th a.ref { background: var(--gold); color: var(--navy); }
 .term-more a { font-weight: 800; }
 @media print { .band.term { background: none; } }
 .term-what { margin: -4px 0 10px; color: var(--blue); font-weight: 700; }
+.term-where { margin: 0 0 10px; }
+.term-where strong { color: var(--navy); }

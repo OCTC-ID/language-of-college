@@ -10,7 +10,8 @@ Checklist for a new term
   1. Change TERM.
   2. Change UPDATED to today's date.
   3. Replace the rows in SCHEDULE, and check HELPS_WITH and ABOUT.
-  4. Check that the TLC phone, email, and link are still right.
+  4. Check LOCATION and LOCATION_NOTE. The TLC moved temporarily in Fall 2026.
+  5. Check that the TLC phone, email, and link are still right.
 """
 
 TERM = "Fall 2026"
@@ -18,6 +19,12 @@ UPDATED = "October 8, 2026"
 
 PERSON = "Professor Matt Branham"
 PLACE = "Teaching and Learning Center"
+
+# Where the TLC is THIS TERM. In Fall 2026 it is in a temporary location, so check this every term.
+# LOCATION is the short form for the home page box. LOCATION_NOTE is one sentence for the page.
+LOCATION = "Technical Building, second floor, room TCE 208"
+LOCATION_NOTE = ("This term, the TLC is on the second floor of the Technical Building, in room TCE 208. "
+                 "This location is temporary.")
 
 # A few words for the home page box: what this person helps with.
 HELPS_WITH = "Help with English and writing"

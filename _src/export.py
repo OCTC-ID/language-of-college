@@ -52,6 +52,8 @@ def link(target, epub):
     key, _, frag = target.partition("#")
     if key == "home":
         return "nav.xhtml" if epub else "#contents"
+    if key not in {k for _, _, pages in parts() for k, _ in pages}:
+        return SITE_URL + build.PATHS[key]  # a page that is not in the downloads, such as This semester
     if epub:
         return f"{key}.xhtml" + (f"#{key}--{frag}" if frag else "")
     return f"#{key}--{frag}" if frag else f"#p-{key}"

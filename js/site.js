@@ -101,7 +101,7 @@
     if (ai || may || maynot) {
       var tools = [];
       if (ai) {
-        tools.push('AI level: ' + ai);
+        tools.push('AI use label: ' + ai);
         if (supported) {
           if (uses.length) { tools.push('You may use AI for:\n' + uses.map(function (u) { return '- ' + u; }).join('\n')); }
           if (limit) { tools.push('You may not use AI to ' + sentence(limit)); }
@@ -121,7 +121,7 @@
       tools.push('If you are not sure whether a tool is allowed, ask me before you use it.');
       parts.push('Tools\n' + tools.join('\n'));
     }
-    if (!ai) { missing.push('the AI level (No AI, AI-supported, or AI-integrated)'); }
+    if (!ai) { missing.push('the AI use label (No AI, AI-supported, or AI-integrated)'); }
     if (supported && !uses.length) { missing.push('which uses of AI are allowed (AI-supported does not say)'); }
     if (supported && !limit) { missing.push('which use of AI is not allowed'); }
     if (integrated && !intSteps.length) { missing.push('the steps for using AI'); }

@@ -71,9 +71,9 @@ SECTIONS = [
     ]),
     ("grammar", "Grammar for college writing", "Practice the grammar points that appear in every assignment.", [
         ("articles", "Articles: a, an, the", "grammar/articles.html"),
-        ("subject-verb", "Subject-verb agreement", None),
-        ("verb-tense", "Verb tense: staying consistent", None),
-        ("sentence-boundaries", "Sentence boundaries: fragments and run-ons", None),
+        ("subject-verb", "Subject-verb agreement", "grammar/subject-verb-agreement.html"),
+        ("verb-tense", "Verb tense: staying consistent", "grammar/verb-tense.html"),
+        ("sentence-boundaries", "Sentence boundaries: fragments and run-ons", "grammar/sentence-boundaries.html"),
     ]),
     ("feedback", "Revise and use feedback", "Turn comments on your work into a plan.", [
         ("instructor-feedback", "Understanding instructor feedback", None),
@@ -224,6 +224,27 @@ PAGES.update({
         when="you are deciding which language tools and AI uses to allow on an assignment.",
         meta="About 8 minutes. Includes wording you can copy.",
         desc="Seven practices for stating which language tools and AI uses an assignment allows, with a Tools line, a use note, and syllabus wording to copy.",
+    ),
+})
+
+PAGES.update({
+    "subject-verb": dict(
+        h1="Subject-Verb Agreement",
+        when="you are not sure whether a verb needs <span translate=\"no\">-s</span>, or whether to use <span translate=\"no\">is</span> or <span translate=\"no\">are</span>.",
+        meta="About 10 minutes. Includes practice with answers.",
+        desc="How to match a present-tense verb to its subject, with five situations where the subject is hard to find and practice with answers.",
+    ),
+    "verb-tense": dict(
+        h1="Verb Tense: Staying Consistent",
+        when="your writing moves between past, present, and future, and you want the time to stay clear.",
+        meta="About 10 minutes. Includes practice with answers.",
+        desc="How to choose a main tense and change it only when the time changes, with the three tenses used most in college writing and common irregular verbs.",
+    ),
+    "sentence-boundaries": dict(
+        h1="Sentence Boundaries: Fragments and Run-ons",
+        when="you are not sure where one sentence should end and the next should begin.",
+        meta="About 12 minutes. Includes practice with answers.",
+        desc="How to find and fix sentence fragments, run-ons, and comma splices, with four ways to connect two sentences and practice with answers.",
     ),
 })
 

@@ -28,7 +28,7 @@ import build  # noqa: E402
 
 ROOT = build.ROOT
 OUT = ROOT / "downloads"
-SITE_URL = "https://octc-id.github.io/language-of-college/"
+SITE_URL = "https://octc-instructional-design.github.io/language-of-college/"
 TITLE = "The Language of College: A Reading, Writing & Communication Toolkit"
 PUBLISHER = "Owensboro Community & Technical College"
 TODAY = datetime.date.today()

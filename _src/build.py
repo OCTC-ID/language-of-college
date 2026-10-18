@@ -86,9 +86,9 @@ SECTIONS = [
         ("tutor", "Working with a tutor", "help/working-with-a-tutor.html"),
     ]),
     ("tools", "Tools and AI", "Use language tools and AI to learn, within your course rules.", [
-        ("tools-check-rules", "Translation, grammar tools, and AI: check the rules first", None),
-        ("ai-to-learn", "Using AI to learn", None),
-        ("writing-record", "Keeping a record of your writing process", None),
+        ("tools-check-rules", "Translation, grammar tools, and AI: check the rules first", "tools/check-the-rules.html"),
+        ("ai-to-learn", "Using AI to learn", "tools/ai-to-learn.html"),
+        ("writing-record", "Keeping a record of your writing process", "tools/writing-record.html"),
     ]),
 ]
 
@@ -98,7 +98,7 @@ INSTRUCTOR = ("instructors", "Instructor Companion", "", [
     ("prompt-builder", "Tool: Assignment prompt builder", "instructors/prompt-builder.html"),
     ("rubrics-language", "Rubrics and where language accuracy fits", "instructors/rubrics-language.html"),
     ("actionable-feedback", "Focused, actionable feedback", None),
-    ("tool-expectations", "Setting expectations for translation, grammar tools, and AI", None),
+    ("tool-expectations", "Setting expectations for translation, grammar tools, and AI", "instructors/tool-expectations.html"),
     ("process-authorship", "Talking about writing process and authorship", None),
     ("language-backgrounds", "Knowing your students' language backgrounds", None),
 ])
@@ -197,6 +197,33 @@ PAGES.update({
         when="you want to know what instructors and classmates usually expect in a U.S. college class.",
         meta="About 10 minutes. Includes practice with answers.",
         desc="Common unwritten expectations in U.S. college classes: talking with instructors, asking questions, group work, and online classes, with language for polite requests.",
+    ),
+})
+
+PAGES.update({
+    "tools-check-rules": dict(
+        h1="Translation, Grammar Tools, and AI: Check the Rules First",
+        when="you want to use a dictionary, a translation tool, a grammar checker, or AI on an assignment.",
+        meta="About 10 minutes. Includes practice with answers.",
+        desc="How to check the AI use label and the rules for language tools before you use them, with one question for any tool: who leads?",
+    ),
+    "ai-to-learn": dict(
+        h1="Using AI to Learn",
+        when="the AI use label allows AI, and you want help understanding an assignment or feedback on your practice writing.",
+        meta="About 10 minutes. Includes two Copilot prompts to copy.",
+        desc="Two Microsoft Copilot prompts that keep you in the lead: one explains an assignment in plain English, one gives feedback without rewriting your work.",
+    ),
+    "writing-record": dict(
+        h1="Keeping a Record of Your Writing Process",
+        when="you start a writing assignment, or you want to show how your work developed.",
+        meta="About 8 minutes. Includes practice with answers.",
+        desc="How to keep brainstorming, outlines, drafts, source notes, and short notes on significant help, and how to say clearly who did what.",
+    ),
+    "tool-expectations": dict(
+        h1="Setting Expectations for Translation, Grammar Tools, and AI",
+        when="you are deciding which language tools and AI uses to allow on an assignment.",
+        meta="About 8 minutes. Includes wording you can copy.",
+        desc="Seven practices for stating which language tools and AI uses an assignment allows, with a Tools line, a use note, and syllabus wording to copy.",
     ),
 })
 

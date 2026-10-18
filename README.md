@@ -25,6 +25,7 @@ images/                 OCTC logos and tab icons (from the official logo files)
 assignments/            Student pages: Understand the assignment
 participate/            Student pages: Take part in class
 grammar/                Student pages: Grammar for college writing
+tools/                  Student pages: Tools and AI
 instructors/            Instructor Companion pages and tools
 _src/build.py           Table of contents and page shell; builds every page
 _src/pages/*.html       The body of each page (edit these)

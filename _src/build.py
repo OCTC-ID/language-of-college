@@ -76,7 +76,7 @@ SECTIONS = [
         ("sentence-boundaries", "Sentence boundaries: fragments and run-ons", "grammar/sentence-boundaries.html"),
     ]),
     ("feedback", "Revise and use feedback", "Turn comments on your work into a plan.", [
-        ("instructor-feedback", "Understanding instructor feedback", None),
+        ("instructor-feedback", "Understanding instructor feedback", "feedback/understanding-instructor-feedback.html"),
     ]),
     ("sources", "Use sources", "Bring other people's ideas into your writing correctly.", [
         ("quote-paraphrase-summarize", "Quote, paraphrase, or summarize", None),
@@ -254,6 +254,21 @@ PAGES.update({
         when="you have a question for your instructor and want to ask it clearly in writing.",
         meta="About 10 minutes. Includes practice with answers.",
         desc="How to write a clear email to an instructor: what to check first, six parts of an email, what to write after missing class, and how to form indirect questions.",
+    ),
+})
+
+PAGES.update({
+    "instructor-feedback": dict(
+        h1="Understanding Instructor Feedback",
+        when="you get a graded assignment back and want to know what your instructor is asking you to change.",
+        meta="About 12 minutes. Includes practice with answers.",
+        desc="Where to find all four kinds of feedback in Blackboard, what common marks mean, how to read polite suggestions as requests, and how to make a revision plan.",
+    ),
+    "actionable-feedback": dict(
+        h1="Focused, Actionable Feedback",
+        when="you are giving feedback on student writing in Blackboard, typed or recorded.",
+        meta="About 8 minutes. Includes wording you can copy.",
+        desc="Seven practices for feedback students can find and act on, across overall feedback, inline comments, rubric comments, and recordings, with templates to copy.",
     ),
 })
 

@@ -58,8 +58,8 @@ SECTIONS = [
     ("participate", "Take part in class", "Join discussions and reflect on your learning.", [
         ("discussion-post", "Writing a discussion post", "participate/discussion-post.html"),
         ("replying", "Replying to classmates", "participate/replying.html"),
-        ("journal", "Writing a journal or reflection", None),
-        ("interacting", "Interacting in class: common expectations", None),
+        ("journal", "Writing a journal or reflection", "participate/journal.html"),
+        ("interacting", "Interacting in class: common expectations", "participate/interacting.html"),
     ]),
     ("reading", "Read college texts", "Understand difficult readings one step at a time.", [
         ("context-clues", "Using context clues", None),
@@ -182,6 +182,21 @@ PAGES.update({
         when="you are thinking about getting help from a tutor, or you are getting ready for your first session.",
         meta="About 8 minutes. Includes practice with answers.",
         desc="What a tutor does, when to go, what to bring, and what to say, with language for asking for exactly the help you need.",
+    ),
+})
+
+PAGES.update({
+    "journal": dict(
+        h1="Writing a Journal or Reflection",
+        when="your instructor asks you to write a journal entry or reflect on your learning.",
+        meta="About 10 minutes. Includes practice with answers.",
+        desc="How to write a college journal or reflection: what happened, what you learned, and what you will do next, with practice in changing verb tense.",
+    ),
+    "interacting": dict(
+        h1="Interacting in Class: Common Expectations",
+        when="you want to know what instructors and classmates usually expect in a U.S. college class.",
+        meta="About 10 minutes. Includes practice with answers.",
+        desc="Common unwritten expectations in U.S. college classes: talking with instructors, asking questions, group work, and online classes, with language for polite requests.",
     ),
 })
 

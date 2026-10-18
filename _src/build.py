@@ -82,7 +82,7 @@ SECTIONS = [
         ("quote-paraphrase-summarize", "Quote, paraphrase, or summarize", None),
     ]),
     ("help", "Ask for help", "Ask questions in a clear, professional way.", [
-        ("emailing-an-instructor", "Emailing an instructor and asking questions", None),
+        ("emailing-an-instructor", "Emailing an instructor and asking questions", "help/emailing-an-instructor.html"),
         ("tutor", "Working with a tutor", "help/working-with-a-tutor.html"),
     ]),
     ("tools", "Tools and AI", "Use language tools and AI to learn, within your course rules.", [
@@ -245,6 +245,15 @@ PAGES.update({
         when="you are not sure where one sentence should end and the next should begin.",
         meta="About 12 minutes. Includes practice with answers.",
         desc="How to find and fix sentence fragments, run-ons, and comma splices, with four ways to connect two sentences and practice with answers.",
+    ),
+})
+
+PAGES.update({
+    "emailing-an-instructor": dict(
+        h1="Emailing an Instructor and Asking Questions",
+        when="you have a question for your instructor and want to ask it clearly in writing.",
+        meta="About 10 minutes. Includes practice with answers.",
+        desc="How to write a clear email to an instructor: what to check first, six parts of an email, what to write after missing class, and how to form indirect questions.",
     ),
 })
 

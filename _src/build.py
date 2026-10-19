@@ -110,8 +110,8 @@ INSTRUCTOR = ("instructors", "Instructor Companion", "", [
     ("rubrics-language", "Rubrics and where language accuracy fits", "instructors/rubrics-language.html"),
     ("actionable-feedback", "Focused, actionable feedback", "instructors/actionable-feedback.html"),
     ("tool-expectations", "Setting expectations for translation, grammar tools, and AI", "instructors/tool-expectations.html"),
-    ("process-authorship", "Talking about writing process and authorship", None),
-    ("language-backgrounds", "Knowing your students' language backgrounds", None),
+    ("process-authorship", "Talking about writing process and authorship", "instructors/process-authorship.html"),
+    ("language-backgrounds", "Knowing your students' language backgrounds", "instructors/language-backgrounds.html"),
 ])
 
 # Extra details for each built page: h1, "use this page when" line, meta line, description
@@ -325,6 +325,21 @@ PAGES.update({
         when="you need to use a source in your writing and want to do it correctly.",
         meta="About 12 minutes. Includes practice with answers.",
         desc="When to quote, paraphrase, or summarize a source, how to paraphrase without copying, and reporting verbs such as argues and explains.",
+    ),
+})
+
+PAGES.update({
+    "process-authorship": dict(
+        h1="Talking About Writing Process and Authorship",
+        when="you want to set process expectations, or you have a concern about whether work is a student&rsquo;s own.",
+        meta="About 8 minutes. Includes wording you can copy.",
+        desc="Seven practices for process expectations and authorship conversations that do not rely on AI detection or treat language differences as evidence.",
+    ),
+    "language-backgrounds": dict(
+        h1="Knowing Your Students’ Language Backgrounds",
+        when="you want to understand the multilingual learners in your course without making assumptions.",
+        meta="About 8 minutes. Includes wording you can copy.",
+        desc="Who multilingual learners are, six practices for learning about students without singling anyone out, and an optional first-week question to copy.",
     ),
 })
 

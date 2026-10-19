@@ -99,7 +99,7 @@ LIFE = ("life", "College Life", "Beyond the classroom", [
     ("balancing", "Balancing school, work, and family", "Find time for classes in a busy life.", "life/balancing-school-work-family.html"),
     ("connections", "Making connections", "Meet classmates, instructors, and people at campus and community events.", "life/making-connections.html"),
     ("expectations", "Different schools, different expectations", "What may be new about U.S. college, wherever you studied before.", None),
-    ("speaking-up", "Speaking up and being understood", "Take part in class with confidence.", None),
+    ("speaking-up", "Speaking up and being understood", "Take part in class with confidence.", "life/speaking-up.html"),
     ("when-things-are-hard", "When things feel hard", "Stress is common. Know where to find support at OCTC.", None),
 ])
 
@@ -368,6 +368,15 @@ PAGES.update({
         when="your classes, job, and family all need your time, and you want a plan.",
         meta="About 8 minutes.",
         desc="Five habits for fitting college into a full life, how to ask an instructor for flexibility before a deadline, and the small words used with due dates.",
+    ),
+})
+
+PAGES.update({
+    "speaking-up": dict(
+        h1="Speaking Up and Being Understood",
+        when="you feel nervous about speaking in class, or people sometimes do not understand you.",
+        meta="About 8 minutes.",
+        desc="How to be understood when you speak in class: pace, pauses, and word stress, with phrases for joining a conversation and repairing a misunderstanding.",
     ),
 })
 

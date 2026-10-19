@@ -108,7 +108,7 @@ INSTRUCTOR = ("instructors", "Instructor Companion", "", [
     ("discussions-journals", "Setting expectations for discussions and journals", "instructors/discussions-journals.html"),
     ("prompt-builder", "Tool: Assignment prompt builder", "instructors/prompt-builder.html"),
     ("rubrics-language", "Rubrics and where language accuracy fits", "instructors/rubrics-language.html"),
-    ("actionable-feedback", "Focused, actionable feedback", None),
+    ("actionable-feedback", "Focused, actionable feedback", "instructors/actionable-feedback.html"),
     ("tool-expectations", "Setting expectations for translation, grammar tools, and AI", "instructors/tool-expectations.html"),
     ("process-authorship", "Talking about writing process and authorship", None),
     ("language-backgrounds", "Knowing your students' language backgrounds", None),

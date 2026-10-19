@@ -97,7 +97,7 @@ SECTIONS = [
 LIFE = ("life", "College Life", "Beyond the classroom", [
     ("belonging", "Feeling at home in college", "You belong here. Many new students feel unsure at first.", None),
     ("balancing", "Balancing school, work, and family", "Find time for classes in a busy life.", None),
-    ("connections", "Making connections", "Get to know classmates, study partners, and instructors.", None),
+    ("connections", "Making connections", "Get to know classmates, study partners, and instructors.", "life/making-connections.html"),
     ("expectations", "Different schools, different expectations", "What may be new about U.S. college, wherever you studied before.", None),
     ("speaking-up", "Speaking up and being understood", "Take part in class with confidence.", None),
     ("when-things-are-hard", "When things feel hard", "Stress is common. Know where to find support at OCTC.", None),
@@ -353,6 +353,15 @@ PAGES.update({
     ),
 })
 
+PAGES.update({
+    "connections": dict(
+        h1="Making Connections",
+        when="you want to get to know classmates, find a study partner, or feel more comfortable with your instructors.",
+        meta="About 8 minutes.",
+        desc="How to get to know classmates, start a study group, and approach instructors, with the language of invitations and polite replies.",
+    ),
+})
+
 PATHS = {"home": "index.html", "semester": "this-semester/index.html"}
 for _sec in SECTIONS + [INSTRUCTOR]:
     for _key, _title, _path in _sec[3]:
@@ -477,7 +486,7 @@ def build_page(key, section, instructor, mode):
     onpage = re.findall(r'<section id="([^"]+)" data-nav="([^"]+)"', body)
     home = mode.url("home", page_path)
     label = "Instructor Companion" if instructor else "Section"
-    back = mode.url("home#instructors" if instructor else "home#contents", page_path)
+    back = mode.url("home#instructors" if instructor else ("home#college-life" if section[0] == "life" else "home#contents"), page_path)
     band = (
         '<div class="audience"><div class="inner"><strong>Instructor Companion</strong>'
         "For faculty and staff. Students are welcome to read it too.</div></div>"
@@ -648,6 +657,11 @@ def build_home(mode):
 {foot(p, mode)}"""
 
 
+def life_section():
+    """College Life pages use the same page shell, with (key, title, path) items."""
+    return (LIFE[0], LIFE[1], LIFE[2], [(k, t, p) for k, t, _g, p in LIFE[3]])
+
+
 def main():
     preview = None
     if "--preview" in sys.argv:
@@ -670,6 +684,9 @@ def main():
     for key, _title, path in INSTRUCTOR[3]:
         if path:
             write(key, build_page(key, INSTRUCTOR, True, mode))
+    for key, _title, path in life_section()[3]:
+        if path:
+            write(key, build_page(key, life_section(), False, mode))
 
 
 if __name__ == "__main__":

@@ -30,6 +30,7 @@ writing/                Student pages: Write
 grammar/                Student pages: Grammar for college writing
 sources/                Student pages: Use sources
 tools/                  Student pages: Tools and AI
+life/                   Student pages: College Life (home page band)
 instructors/            Instructor Companion pages and tools
 _src/build.py           Table of contents and page shell; builds every page
 _src/pages/*.html       The body of each page (edit these)

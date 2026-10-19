@@ -66,8 +66,8 @@ SECTIONS = [
         ("long-sentence", "Unpacking a long sentence", "reading/long-sentence.html"),
     ]),
     ("writing", "Write", "Build clear sentences and paragraphs.", [
-        ("paragraph", "Building a paragraph", None),
-        ("sentences", "Sentences that say what you mean", None),
+        ("paragraph", "Building a paragraph", "writing/building-a-paragraph.html"),
+        ("sentences", "Sentences that say what you mean", "writing/clear-sentences.html"),
     ]),
     ("grammar", "Grammar for college writing", "Practice the grammar points that appear in every assignment.", [
         ("articles", "Articles: a, an, the", "grammar/articles.html"),
@@ -79,7 +79,7 @@ SECTIONS = [
         ("instructor-feedback", "Understanding instructor feedback", "feedback/understanding-instructor-feedback.html"),
     ]),
     ("sources", "Use sources", "Bring other people's ideas into your writing correctly.", [
-        ("quote-paraphrase-summarize", "Quote, paraphrase, or summarize", None),
+        ("quote-paraphrase-summarize", "Quote, paraphrase, or summarize", "sources/quote-paraphrase-summarize.html"),
     ]),
     ("help", "Ask for help", "Ask questions in a clear, professional way.", [
         ("emailing-an-instructor", "Emailing an instructor and asking questions", "help/emailing-an-instructor.html"),
@@ -304,6 +304,27 @@ PAGES.update({
         when="you read a sentence two or three times and still cannot find the main idea.",
         meta="About 10 minutes. Includes practice with answers.",
         desc="Five steps for finding the main subject and verb in a long academic sentence, with who, which, and that parts as the language focus.",
+    ),
+})
+
+PAGES.update({
+    "paragraph": dict(
+        h1="Building a Paragraph",
+        when="you are writing or revising a paragraph and want it to develop one clear idea.",
+        meta="About 10 minutes. Includes practice with answers.",
+        desc="How to build a college paragraph in four parts (point, support, explain, link), with transitions as the language focus.",
+    ),
+    "sentences": dict(
+        h1="Sentences That Say What You Mean",
+        when="you are revising, and a sentence feels unclear, vague, or too long.",
+        meta="About 10 minutes. Includes practice with answers.",
+        desc="Five ways to make a sentence clearer: specific words, a clear subject, fewer words, one idea, and this + a noun.",
+    ),
+    "quote-paraphrase-summarize": dict(
+        h1="Quote, Paraphrase, or Summarize",
+        when="you need to use a source in your writing and want to do it correctly.",
+        meta="About 12 minutes. Includes practice with answers.",
+        desc="When to quote, paraphrase, or summarize a source, how to paraphrase without copying, and reporting verbs such as argues and explains.",
     ),
 })
 

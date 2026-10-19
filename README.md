@@ -26,7 +26,9 @@ words/                  Student pages: College words
 assignments/            Student pages: Understand the assignment
 participate/            Student pages: Take part in class
 reading/                Student pages: Read college texts
+writing/                Student pages: Write
 grammar/                Student pages: Grammar for college writing
+sources/                Student pages: Use sources
 tools/                  Student pages: Tools and AI
 instructors/            Instructor Companion pages and tools
 _src/build.py           Table of contents and page shell; builds every page

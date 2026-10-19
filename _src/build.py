@@ -97,7 +97,7 @@ SECTIONS = [
 LIFE = ("life", "College Life", "Beyond the classroom", [
     ("belonging", "Feeling at home in college", "You belong here. Many new students feel unsure at first.", None),
     ("balancing", "Balancing school, work, and family", "Find time for classes in a busy life.", None),
-    ("connections", "Making connections", "Get to know classmates, study partners, and instructors.", "life/making-connections.html"),
+    ("connections", "Making connections", "Meet classmates, instructors, and people at campus and community events.", "life/making-connections.html"),
     ("expectations", "Different schools, different expectations", "What may be new about U.S. college, wherever you studied before.", None),
     ("speaking-up", "Speaking up and being understood", "Take part in class with confidence.", None),
     ("when-things-are-hard", "When things feel hard", "Stress is common. Know where to find support at OCTC.", None),
@@ -356,9 +356,9 @@ PAGES.update({
 PAGES.update({
     "connections": dict(
         h1="Making Connections",
-        when="you want to get to know classmates, find a study partner, or feel more comfortable with your instructors.",
+        when="you want to get to know classmates, find a study partner, feel more comfortable with your instructors, or find events to attend.",
         meta="About 8 minutes.",
-        desc="How to get to know classmates, start a study group, and approach instructors, with the language of invitations and polite replies.",
+        desc="How to get to know classmates, start a study group, approach instructors, and find campus and community events, with the language of invitations and polite replies.",
     ),
 })
 

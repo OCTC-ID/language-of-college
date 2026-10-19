@@ -96,10 +96,10 @@ SECTIONS = [
 # Each tile is one page: (key, title, goal line, path or None).
 LIFE = ("life", "College Life", "Beyond the classroom", [
     ("belonging", "Feeling at home in college", "You belong here. Many new students feel unsure at first.", None),
-    ("balancing", "Balancing school, work, and family", "Make room for classes in a full life.", None),
+    ("balancing", "Balancing school, work, and family", "Find time for classes in a busy life.", None),
     ("connections", "Making connections", "Get to know classmates, study partners, and instructors.", None),
     ("expectations", "Different schools, different expectations", "What may be new about U.S. college, wherever you studied before.", None),
-    ("speaking-up", "Speaking up and being understood", "Take part with confidence, in your own voice.", None),
+    ("speaking-up", "Speaking up and being understood", "Take part in class with confidence.", None),
     ("when-things-are-hard", "When things feel hard", "Stress is common. Know where to find support at OCTC.", None),
 ])
 

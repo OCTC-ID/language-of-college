@@ -33,7 +33,7 @@ from zoneinfo import ZoneInfo
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import semester  # noqa: E402  (current-term information; edit _src/semester.py each term)
 
-V = 19
+V = 20
 # The edition shown in every page footer. Change it when you release a new version,
 # for example "Spring 2027". The "Updated" date beside it is filled in automatically.
 EDITION = "Fall 2026"
@@ -413,7 +413,7 @@ PAGES.update({
     ),
 })
 
-PATHS = {"home": "index.html", "semester": "this-semester/index.html"}
+PATHS = {"home": "index.html", "semester": "this-semester/index.html", "instructors-home": "instructors/index.html"}
 for _sec in SECTIONS + [INSTRUCTOR]:
     for _key, _title, _path in _sec[3]:
         if _path:
@@ -484,8 +484,9 @@ def bar(page_path, mode):
     </a>
     <nav class="bar-nav" aria-label="Site">
       <a href="{mode.url('semester', page_path)}">This semester</a>
-      <a href="{mode.url('home#contents', page_path)}">Contents</a>
-      <a class="pill" href="{mode.url('home#instructors', page_path)}">Instructor Companion</a>
+      <a href="{mode.url('home#contents', page_path)}"><span class="nav-long">College </span>Classes</a>
+      <a href="{mode.url('home#college-life', page_path)}"><span class="nav-long">College </span>Life</a>
+      <a class="pill" href="{mode.url('instructors-home', page_path)}">For instructors</a>
     </nav>
   </div>
 </header>"""
@@ -559,7 +560,7 @@ def build_page(key, section, instructor, mode):
     onpage = re.findall(r'<section id="([^"]+)" data-nav="([^"]+)"', body)
     home = mode.url("home", page_path)
     label = "Instructor Companion" if instructor else "Section"
-    back = mode.url("home#instructors" if instructor else ("home#college-life" if section[0] == "life" else "home#contents"), page_path)
+    back = mode.url("instructors-home" if instructor else ("home#college-life" if section[0] == "life" else "home#contents"), page_path)
     band = (
         '<div class="audience"><div class="inner"><strong>Instructor Companion</strong>'
         "For faculty and staff. Students are welcome to read it too.</div></div>"
@@ -703,6 +704,48 @@ def life_tiles(page_path, mode):
     return "\n        ".join(out)
 
 
+def build_instructors_home(mode):
+    """The Instructor Companion landing page, built from _src/pages/instructors-home.html."""
+    p = PATHS["instructors-home"]
+    body = fill((SRC / "instructors-home.html").read_text(), p, mode)
+    listing = []
+    for key, title, path in INSTRUCTOR[3]:
+        if path:
+            listing.append(f'<li><a href="{mode.url(key, p)}">{esc(title)}</a><span class="desc">{esc(PAGES[key]["desc"])}</span></li>')
+        else:
+            listing.append(f'<li><span class="pg">{esc(title)} <span class="soon">Coming soon</span></span></li>')
+    body = body.replace("<!--INSTRUCTOR-LIST-->", "\n        ".join(listing))
+    side = page_list(INSTRUCTOR, None, p, mode, [])
+    desc = "The Instructor Companion: practical guidance for faculty on clear assignments, feedback, language support, and AI, paired with student pages."
+    return f"""{head(f"Instructor Companion | {SITE}", desc, p, mode)}
+<body class="instructor">
+{bar(p, mode)}
+<div class="audience"><div class="inner"><strong>Instructor Companion</strong>For faculty and staff. Students are welcome to read it too.</div></div>
+<div class="shell">
+  <nav class="sidenav" aria-label="Instructor Companion">
+    <details open>
+      <summary>
+        <span><span class="side-label">Instructor Companion</span><span class="side-title">For faculty and staff</span></span>
+        <span class="side-toggle"><span class="when-closed">Pages</span><span class="when-open">Close</span></span>
+      </summary>
+      <div class="panel">
+      <ul>
+        {side}
+      </ul>
+      <a class="all" href="{mode.url('home', p)}">Student pages</a>
+      </div>
+    </details>
+  </nav>
+  <main class="reading" id="main">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="{mode.url('home', p)}">Home</a></li><li>Instructor Companion</li></ol></nav>
+    <p class="kicker">For faculty and staff</p>
+    <h1>Instructor Companion</h1>
+{body}
+  </main>
+</div>
+{foot(p, mode, updated([SRC / "instructors-home.html"]))}"""
+
+
 def build_home(mode):
     p = "index.html"
     cards = "\n".join(
@@ -750,6 +793,7 @@ def main():
 
     write("home", build_home(mode))
     write("semester", build_semester(mode))
+    write("instructors-home", build_instructors_home(mode))
     for section in SECTIONS:
         for key, _title, path in section[3]:
             if path:

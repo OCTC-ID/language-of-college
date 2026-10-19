@@ -112,6 +112,7 @@ INSTRUCTOR = ("instructors", "Instructor Companion", "", [
     ("tool-expectations", "Setting expectations for translation, grammar tools, and AI", "instructors/tool-expectations.html"),
     ("process-authorship", "Talking about writing process and authorship", "instructors/process-authorship.html"),
     ("language-backgrounds", "Knowing your students' language backgrounds", "instructors/language-backgrounds.html"),
+    ("language-terms", "Terms for language learners: what to use, and when", "instructors/language-terms.html"),
 ])
 
 # Extra details for each built page: h1, "use this page when" line, meta line, description
@@ -340,6 +341,15 @@ PAGES.update({
         when="you want to understand the multilingual learners in your course without making assumptions.",
         meta="About 8 minutes. Includes wording you can copy.",
         desc="Who multilingual learners are, six practices for learning about students without singling anyone out, and an optional first-week question to copy.",
+    ),
+})
+
+PAGES.update({
+    "language-terms": dict(
+        h1="Terms for Language Learners: What to Use, and When",
+        when="you are not sure whether to say ESL, ELL, multilingual, or nothing at all.",
+        meta="About 8 minutes. Includes a glossary and wording you can copy.",
+        desc="A glossary of terms for language learners, from ESL and ELL to multilingual writer and Generation 1.5, with practices for choosing respectful, accurate terms.",
     ),
 })
 

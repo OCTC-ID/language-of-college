@@ -344,7 +344,8 @@ footer .eeo { margin: 12px 0 0; font-size: .8rem; line-height: 1.55; max-width: 
 .rubric-ex { font-size: .92rem; }
 .rubric-ex tbody th { width: 9.5em; }
 .rubric-ex th .ref, .rubric-ex td .ref { vertical-align: 1px; }
-thead th a.ref { background: var(--gold); color: var(--navy); }
+/* White numbers on PMS 300 with a white ring: passes against the badge (6.52:1) and against the navy header cell (16.75:1), which is what Ally measures. */
+thead th a.ref { background: var(--bright); color: #fff; box-shadow: 0 0 0 1.5px #fff; }
 .ba .body > p { margin: 0 0 .5em; }
 .scroll-hint { display: none; font-size: .86rem; color: var(--muted); margin: 0 0 8px; }
 @media (max-width: 700px) {

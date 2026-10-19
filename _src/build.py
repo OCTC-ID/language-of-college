@@ -33,7 +33,7 @@ from zoneinfo import ZoneInfo
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import semester  # noqa: E402  (current-term information; edit _src/semester.py each term)
 
-V = 21
+V = 22
 # The edition shown in every page footer. Change it when you release a new version,
 # for example "Spring 2027". The "Updated" date beside it is filled in automatically.
 EDITION = "Fall 2026"

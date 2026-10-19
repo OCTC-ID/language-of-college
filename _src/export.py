@@ -42,6 +42,9 @@ def parts():
         pages = [(k, t) for k, t, p in sec[3] if p]
         if pages:
             out.append((sec[1], False, pages))
+    pages = [(k, t) for k, t, p in build.life_section()[3] if p]
+    if pages:
+        out.append((build.LIFE[1], False, pages))
     pages = [(k, t) for k, t, p in build.INSTRUCTOR[3] if p]
     if pages:
         out.append((build.INSTRUCTOR[1], True, pages))
@@ -183,7 +186,7 @@ def build_pdf():
                 display_header_footer=True, header_template="<span></span>",
                 footer_template=('<div style="font-size:9pt;font-family:Arial,sans-serif;color:#52606d;width:100%;'
                                  'padding:0 0.8in;display:flex;justify-content:space-between">'
-                                 '<span>The Language of College</span><span>Page <span class="pageNumber"></span></span></div>'),
+                                 f'<span>The Language of College &middot; {build.EDITION} edition</span><span>Page <span class="pageNumber"></span></span></div>'),
                 margin={"top": "0.75in", "bottom": "0.9in", "left": "0.8in", "right": "0.8in"},
             )
             browser.close()

@@ -22,15 +22,21 @@ Rules (same as the FYE guidebook)
 - Raise V after any change to css/styles.css or js/site.js.
 """
 import base64
+import datetime
 import html
 import re
+import subprocess
 import sys
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import semester  # noqa: E402  (current-term information; edit _src/semester.py each term)
 
-V = 18
+V = 19
+# The edition shown in every page footer. Change it when you release a new version,
+# for example "Spring 2027". The "Updated" date beside it is filled in automatically.
+EDITION = "Fall 2026"
 SITE = "The Language of College"
 SUBTITLE = "A Reading, Writing &amp; Communication Toolkit"
 ROOT = Path(__file__).resolve().parent.parent
@@ -485,7 +491,28 @@ def bar(page_path, mode):
 </header>"""
 
 
-def foot(page_path, mode):
+LOCAL = ZoneInfo("America/Chicago")  # OCTC's time zone, for "Updated" dates
+
+
+def updated(files):
+    """The date the given source files last changed, as "October 18, 2026".
+    Uncommitted edits count as today; otherwise the newest git commit that touched them."""
+    files = [str(f) for f in files]
+    try:
+        dirty = subprocess.run(["git", "status", "--porcelain", "--", *files], cwd=ROOT,
+                               capture_output=True, text=True, check=True).stdout.strip()
+        if dirty:
+            day = datetime.datetime.now(LOCAL)
+        else:
+            stamp = subprocess.run(["git", "log", "-1", "--format=%ct", "--", *files], cwd=ROOT,
+                                   capture_output=True, text=True, check=True).stdout.strip()
+            day = datetime.datetime.fromtimestamp(int(stamp), LOCAL) if stamp else datetime.datetime.now(LOCAL)
+    except (OSError, subprocess.CalledProcessError, ValueError):
+        day = datetime.datetime.now(LOCAL)
+    return f"{day:%B} {day.day}, {day.year}"
+
+
+def foot(page_path, mode, when=None):
     if mode.preview:
         js = "<script>" + (ROOT / "js/site.js").read_text() + "</script>"
     else:
@@ -493,6 +520,7 @@ def foot(page_path, mode):
     return f"""<footer>
   <div class="inner">
     <div class="who"><span>{SITE}: {SUBTITLE}</span><span>Owensboro Community &amp; Technical College</span></div>
+    <p class="edition">{esc(EDITION)} edition{f" &middot; Updated {when}" if when else ""}</p>
     <p class="eeo">{EEO}</p>
   </div>
 </footer>
@@ -567,7 +595,7 @@ def build_page(key, section, instructor, mode):
 {body}
   </main>
 </div>
-{foot(page_path, mode)}"""
+{foot(page_path, mode, updated([SRC / f"{key}.html"]))}"""
 
 
 def toc_items(section, page_path, mode):
@@ -659,7 +687,7 @@ def build_semester(mode):
     </section>
   </main>
 </div>
-{foot(p, mode)}"""
+{foot(p, mode, updated([ROOT / "_src" / "semester.py"]))}"""
 
 
 def life_tiles(page_path, mode):
@@ -699,7 +727,7 @@ def build_home(mode):
 <main id="main">
 {body}
 </main>
-{foot(p, mode)}"""
+{foot(p, mode, updated([ROOT / "_src"]))}"""
 
 
 def life_section():

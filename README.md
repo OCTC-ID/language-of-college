@@ -62,6 +62,13 @@ To mark a time you still need to confirm, start it with `DRAFT:`. It shows in a 
 
 This is the only page with dates on it. It is left out of the PDF and EPUB downloads on purpose, so an old download never shows an old schedule.
 
+## Edition and updated date
+
+Every page footer shows an edition and a date, for example "Fall 2026 edition · Updated October 18, 2026."
+
+- **Edition:** set `EDITION` near the top of `_src/build.py`. Change it when you release a new version, for example to `"Spring 2027"`. The PDF footer uses the same setting.
+- **Updated:** filled in automatically when you build. Each page shows the date its source file in `_src/pages/` last changed (unsaved or uncommitted edits count as today). The home page shows the newest change anywhere in `_src/`. This semester uses `_src/semester.py`. Dates are in Central time.
+
 ## Editing and building
 
 The pages in the site folders are generated. Edit the source, then rebuild:

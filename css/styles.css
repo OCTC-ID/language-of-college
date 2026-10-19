@@ -398,3 +398,5 @@ thead th a.ref { background: var(--gold); color: var(--navy); }
 @media print { .life-head { background: none; border-bottom: 1px solid var(--ink); } .life-head::after, .life-divider { display: none; } .life > li { box-shadow: none; } }
 .band.tint .life-eyebrow { color: var(--blue); }
 #contents-h { margin-top: 2px; }
+footer .edition { margin: 8px 0 0; font-size: .85rem; color: #fff; }
+@media print { footer .edition { color: var(--ink); } }

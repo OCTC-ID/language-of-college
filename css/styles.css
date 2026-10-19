@@ -396,3 +396,5 @@ thead th a.ref { background: var(--gold); color: var(--navy); }
 @media (max-width: 760px) { .life { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .life { grid-template-columns: 1fr; } }
 @media print { .life-head { background: none; border-bottom: 1px solid var(--ink); } .life-head::after, .life-divider { display: none; } .life > li { box-shadow: none; } }
+.band.tint .life-eyebrow { color: var(--blue); }
+#contents-h { margin-top: 2px; }

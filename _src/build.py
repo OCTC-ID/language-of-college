@@ -48,7 +48,7 @@ EEO = (
 # (section id, section title, goal line, [(key, title, path or None), ...])
 SECTIONS = [
     ("words", "College words", "Know the words you will hear in your first weeks.", [
-        ("college-terms", "College terms you will hear in your first weeks", None),
+        ("college-terms", "College terms you will hear in your first weeks", "words/college-terms.html"),
     ]),
     ("assignments", "Understand the assignment", "Know what an assignment asks before you start.", [
         ("writing-prompt", "Understanding a writing prompt", "assignments/writing-prompt.html"),
@@ -280,6 +280,15 @@ PAGES.update({
         when="you are giving feedback on student writing in Blackboard, typed or recorded.",
         meta="About 8 minutes. Includes wording you can copy.",
         desc="Seven practices for feedback students can find and act on, across overall feedback, inline comments, rubric comments, and recordings, with templates to copy.",
+    ),
+})
+
+PAGES.update({
+    "college-terms": dict(
+        h1="College Terms You Will Hear in Your First Weeks",
+        when="you see a word in your syllabus, in Blackboard, or in class that you do not know.",
+        meta="About 10 minutes. Includes practice with answers.",
+        desc="Plain meanings for common college words about courses, assignments, grades, and campus help, with phrasal verbs such as turn in and make up.",
     ),
 })
 

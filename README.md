@@ -22,6 +22,7 @@ this-semester/          Current-term information (built from _src/semester.py)
 css/styles.css          One stylesheet for every page
 js/site.js              Menu behavior, copy buttons, and the prompt builder
 images/                 OCTC logos and tab icons (from the official logo files)
+words/                  Student pages: College words
 assignments/            Student pages: Understand the assignment
 participate/            Student pages: Take part in class
 grammar/                Student pages: Grammar for college writing

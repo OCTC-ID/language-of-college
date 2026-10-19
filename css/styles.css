@@ -248,8 +248,11 @@ footer .eeo { margin: 12px 0 0; font-size: .8rem; line-height: 1.55; max-width: 
   .brand-text { display: none; }
 }
 @media (max-width: 560px) {
-  .bar-nav a:not(.pill) { display: none; }
-  .bar-nav a.pill { padding: 6px 12px; font-size: .86rem; }
+  .bar .inner { flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px; row-gap: 6px; }
+  .bar-nav { width: 100%; justify-content: space-between; gap: 2px; }
+  .bar-nav a { padding: 6px 8px; font-size: .84rem; }
+  .bar-nav a.pill { padding: 4px 10px; }
+  .nav-long { display: none; }
   .brand img { height: 28px; }
   .annotated .ex, .notes { padding-left: 14px; padding-right: 14px; }
   .focus { padding: 16px; }
@@ -400,3 +403,12 @@ thead th a.ref { background: var(--gold); color: var(--navy); }
 #contents-h { margin-top: 2px; }
 footer .edition { margin: 8px 0 0; font-size: .85rem; color: #fff; }
 @media print { footer .edition { color: var(--ink); } }
+
+/* Home: Instructor Companion teaser (the full list lives on instructors/index.html) */
+.companion-teaser { display: flex; align-items: center; justify-content: space-between; gap: 18px 28px; flex-wrap: wrap; }
+.companion-teaser > div { flex: 1 1 420px; min-width: 0; }
+.companion-teaser h2 { margin: 0 0 6px; }
+.companion-teaser p { margin: 0; }
+.companion-teaser .btn { text-decoration: none; display: inline-block; }
+/* Instructor Companion landing page */
+.pairs td, .pairs th { vertical-align: top; }

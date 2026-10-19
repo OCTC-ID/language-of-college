@@ -213,8 +213,85 @@ def build_pdf():
                     item = item.get("/Next")
             if "/Outlines" in pdf.Root and "/First" in pdf.Root.Outlines:
                 fix_outline(pdf.Root.Outlines.First)
+            mark_artifacts(pdf)
+            fix_tables(pdf)
             pdf.save(final)
     print("built", final.relative_to(ROOT))
+
+
+
+# ---------------------------------------------------------------- PDF accessibility repairs
+PATH_OPS = {"m", "l", "c", "v", "y", "h", "re"}
+PAINT_OPS = {"f", "F", "f*", "S", "s", "B", "B*", "b", "b*"}
+SHOW_OPS = {"Tj", "TJ", "'", '"', "Do", "sh"}
+
+
+def mark_artifacts(pdf):
+    """Mark untagged page content as /Artifact, so Acrobat's "Tagged content" check passes.
+    Chromium leaves the page footer, CSS-generated text (circle numbers, printed link
+    addresses), and box backgrounds and borders outside the tag tree. None of it should be
+    read aloud, which is what an artifact means."""
+    import pikepdf
+    art = [pikepdf.Name.Artifact]
+    for page in pdf.pages:
+        ops = pikepdf.parse_content_stream(page)
+        out, depth, path_start, changed = [], 0, None, False
+        for operands, op in ops:
+            name = str(op)
+            if name in ("BDC", "BMC"):
+                depth += 1
+            elif name == "EMC":
+                depth -= 1
+            if depth == 0 and name in PATH_OPS and path_start is None:
+                path_start = len(out)
+            if depth == 0 and name in PAINT_OPS:
+                start = path_start if path_start is not None else len(out)
+                out.insert(start, pikepdf.ContentStreamInstruction(art, pikepdf.Operator("BMC")))
+                out.append(pikepdf.ContentStreamInstruction(operands, op))
+                out.append(pikepdf.ContentStreamInstruction([], pikepdf.Operator("EMC")))
+                path_start, changed = None, True
+                continue
+            if name == "n" or name in PAINT_OPS:
+                path_start = None
+            if depth == 0 and name in SHOW_OPS:
+                out.append(pikepdf.ContentStreamInstruction(art, pikepdf.Operator("BMC")))
+                out.append(pikepdf.ContentStreamInstruction(operands, op))
+                out.append(pikepdf.ContentStreamInstruction([], pikepdf.Operator("EMC")))
+                changed = True
+                continue
+            out.append(pikepdf.ContentStreamInstruction(operands, op))
+        if changed:
+            page.Contents = pdf.make_stream(pikepdf.unparse_content_stream(out))
+
+
+def fix_tables(pdf):
+    """Chromium tags a table's header row group and its caption as NonStruct.
+    Retag them as THead and Caption, so table rows sit where PDF/UA expects."""
+    import pikepdf
+    def kids(e):
+        k = e.get("/K")
+        if isinstance(k, pikepdf.Array):
+            return [c for c in k if isinstance(c, pikepdf.Dictionary) and "/S" in c]
+        if isinstance(k, pikepdf.Dictionary) and "/S" in k:
+            return [k]
+        return []
+
+    def has_row(e, d=0):
+        return any(str(c.S) == "/TR" or (d < 3 and str(c.S) == "/NonStruct" and has_row(c, d + 1)) for c in kids(e))
+
+    def walk(e):
+        for c in kids(e):
+            if str(c.S) == "/Table":
+                for g in kids(c):
+                    if str(g.S) != "/NonStruct":
+                        continue
+                    if any(str(x.S) == "/TR" for x in kids(g)):
+                        g.S = pikepdf.Name("/THead") if any(str(td.S) == "/TH" for tr in kids(g) for td in kids(tr)) and not any(str(td.S) == "/TD" for tr in kids(g) for td in kids(tr)) else pikepdf.Name("/TBody")
+                    elif not has_row(g):
+                        g.S = pikepdf.Name("/Caption")
+            walk(c)
+
+    walk(pdf.Root.StructTreeRoot)
 
 
 # ---------------------------------------------------------------- EPUB

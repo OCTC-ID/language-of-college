@@ -25,6 +25,7 @@ images/                 OCTC logos and tab icons (from the official logo files)
 words/                  Student pages: College words
 assignments/            Student pages: Understand the assignment
 participate/            Student pages: Take part in class
+reading/                Student pages: Read college texts
 grammar/                Student pages: Grammar for college writing
 tools/                  Student pages: Tools and AI
 instructors/            Instructor Companion pages and tools

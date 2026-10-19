@@ -62,8 +62,8 @@ SECTIONS = [
         ("interacting", "Interacting in class: common expectations", "participate/interacting.html"),
     ]),
     ("reading", "Read college texts", "Understand difficult readings one step at a time.", [
-        ("context-clues", "Using context clues", None),
-        ("long-sentence", "Unpacking a long sentence", None),
+        ("context-clues", "Using context clues", "reading/context-clues.html"),
+        ("long-sentence", "Unpacking a long sentence", "reading/long-sentence.html"),
     ]),
     ("writing", "Write", "Build clear sentences and paragraphs.", [
         ("paragraph", "Building a paragraph", None),
@@ -289,6 +289,21 @@ PAGES.update({
         when="you see a word in your syllabus, in Blackboard, or in class that you do not know.",
         meta="About 10 minutes. Includes practice with answers.",
         desc="Plain meanings for common college words about courses, assignments, grades, and campus help, with phrasal verbs such as turn in and make up.",
+    ),
+})
+
+PAGES.update({
+    "context-clues": dict(
+        h1="Using Context Clues",
+        when="you meet a new word in a reading and want to understand it without stopping to look it up.",
+        meta="About 10 minutes. Includes practice with answers.",
+        desc="How to guess the meaning of a new word from definition, example, contrast, and word-part clues, and when to stop and look it up.",
+    ),
+    "long-sentence": dict(
+        h1="Unpacking a Long Sentence",
+        when="you read a sentence two or three times and still cannot find the main idea.",
+        meta="About 10 minutes. Includes practice with answers.",
+        desc="Five steps for finding the main subject and verb in a long academic sentence, with who, which, and that parts as the language focus.",
     ),
 })
 

@@ -100,7 +100,7 @@ LIFE = ("life", "College Life", "Beyond the classroom", [
     ("connections", "Making connections", "Meet classmates, instructors, and people at campus and community events.", "life/making-connections.html"),
     ("expectations", "Different schools, different expectations", "What may be new about U.S. college, wherever you studied before.", None),
     ("speaking-up", "Speaking up and being understood", "Take part in class with confidence.", "life/speaking-up.html"),
-    ("when-things-are-hard", "When things feel hard", "Stress is common. Know where to find support at OCTC.", None),
+    ("when-things-are-hard", "When things feel hard", "Stress is common. Know where to find support at OCTC.", "life/when-things-feel-hard.html"),
 ])
 
 INSTRUCTOR = ("instructors", "Instructor Companion", "", [
@@ -386,6 +386,15 @@ PAGES.update({
         when="you wonder whether you belong in college, or everything still feels new.",
         meta="About 7 minutes.",
         desc="Why many new students feel unsure, five small steps that help, and the phrases used to, be used to, and get used to for talking about change.",
+    ),
+})
+
+PAGES.update({
+    "when-things-are-hard": dict(
+        h1="When Things Feel Hard",
+        when="you are stressed, worried, or having a hard week, and you want to know where to get help.",
+        meta="About 7 minutes.",
+        desc="What helps in a hard week, how to tell an instructor without sharing private details, and where to find counseling, basic needs, and crisis support.",
     ),
 })
 

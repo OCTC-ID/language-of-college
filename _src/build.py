@@ -95,7 +95,7 @@ SECTIONS = [
 # College Life: a second band of tiles on the home page, under the academic sections.
 # Each tile is one page: (key, title, goal line, path or None).
 LIFE = ("life", "College Life", "Beyond the classroom", [
-    ("belonging", "Feeling at home in college", "You belong here. Many new students feel unsure at first.", None),
+    ("belonging", "Feeling at home in college", "You belong here. Many new students feel unsure at first.", "life/feeling-at-home.html"),
     ("balancing", "Balancing school, work, and family", "Find time for classes in a busy life.", "life/balancing-school-work-family.html"),
     ("connections", "Making connections", "Meet classmates, instructors, and people at campus and community events.", "life/making-connections.html"),
     ("expectations", "Different schools, different expectations", "What may be new about U.S. college, wherever you studied before.", None),
@@ -377,6 +377,15 @@ PAGES.update({
         when="you feel nervous about speaking in class, or people sometimes do not understand you.",
         meta="About 8 minutes.",
         desc="How to be understood when you speak in class: pace, pauses, and word stress, with phrases for joining a conversation and repairing a misunderstanding.",
+    ),
+})
+
+PAGES.update({
+    "belonging": dict(
+        h1="Feeling at Home in College",
+        when="you wonder whether you belong in college, or everything still feels new.",
+        meta="About 7 minutes.",
+        desc="Why many new students feel unsure, five small steps that help, and the phrases used to, be used to, and get used to for talking about change.",
     ),
 })
 

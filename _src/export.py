@@ -31,7 +31,7 @@ OUT = ROOT / "downloads"
 SITE_URL = "https://octc-instructional-design.github.io/language-of-college/"
 TITLE = "The Language of College: A Reading, Writing & Communication Toolkit"
 PUBLISHER = "Owensboro Community & Technical College"
-TODAY = datetime.date.today()
+TODAY = datetime.datetime.now(build.LOCAL).date()  # Central time, OCTC's time zone
 MADE = f"{TODAY.strftime('%B')} {TODAY.day}, {TODAY.year}"
 
 
@@ -160,7 +160,7 @@ def build_pdf():
   <img src="{logo}" alt="Owensboro Community &amp; Technical College">
   <h1>The Language of College</h1>
   <p class="sub">{build.SUBTITLE}</p>
-  <p>Offline edition, made on {MADE}.</p>
+  <p>{build.esc(build.EDITION)} edition. Offline copy made on {MADE}.</p>
   <p>The newest version is on the website: {SITE_URL}</p>
 </section>
 <nav class="book-toc" id="contents" aria-label="Contents"><h1>Contents</h1><ul>{''.join(toc)}</ul></nav>
@@ -200,6 +200,19 @@ def build_pdf():
                 meta["dc:language"] = ["en-US"]
             pdf.docinfo["/Title"] = TITLE
             pdf.docinfo["/Author"] = PUBLISHER
+            # Chromium sometimes writes a bookmark title twice ("WriteWrite") for a heading
+            # that starts a new page. Repair those titles.
+            def fix_outline(item):
+                while item is not None:
+                    title = str(item.get("/Title", ""))
+                    half = len(title) // 2
+                    if len(title) > 2 and len(title) % 2 == 0 and title[:half] == title[half:]:
+                        item.Title = pikepdf.String(title[:half])
+                    if "/First" in item:
+                        fix_outline(item.First)
+                    item = item.get("/Next")
+            if "/Outlines" in pdf.Root and "/First" in pdf.Root.Outlines:
+                fix_outline(pdf.Root.Outlines.First)
             pdf.save(final)
     print("built", final.relative_to(ROOT))
 
@@ -235,7 +248,7 @@ def build_epub():
 <img src="images/octc-logo.png" alt="Owensboro Community &amp; Technical College"/>
 <h1>The Language of College</h1>
 <p class="sub">{build.SUBTITLE}</p>
-<p>Offline edition, made on {MADE}.</p>
+<p>{build.esc(build.EDITION)} edition. Offline copy made on {MADE}.</p>
 <p>The newest version is on the website: <a href="{SITE_URL}">{SITE_URL}</a></p>
 <p class="eeo">{build.EEO}</p></section>""")
     files["OEBPS/title.xhtml"] = xhtml(TITLE, cover)

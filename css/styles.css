@@ -412,3 +412,4 @@ footer .edition { margin: 8px 0 0; font-size: .85rem; color: #fff; }
 .companion-teaser .btn { text-decoration: none; display: inline-block; }
 /* Instructor Companion landing page */
 .pairs td, .pairs th { vertical-align: top; }
+.nb { white-space: nowrap; }

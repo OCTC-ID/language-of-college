@@ -53,3 +53,6 @@ body.pdf thead { display: table-header-group; break-inside: avoid; break-after: 
 body.pdf caption { break-after: avoid; }
 body.pdf .table-wrap { break-before: auto; }
 body.pdf tbody tr:first-child { break-before: avoid; }
+
+/* Plain letters, not ligatures (ffi, ffl), so copied and read-aloud text is exact. */
+body.export { font-variant-ligatures: none; font-feature-settings: "liga" 0, "clig" 0; }

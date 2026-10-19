@@ -30,7 +30,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import semester  # noqa: E402  (current-term information; edit _src/semester.py each term)
 
-V = 17
+V = 18
 SITE = "The Language of College"
 SUBTITLE = "A Reading, Writing &amp; Communication Toolkit"
 ROOT = Path(__file__).resolve().parent.parent
@@ -91,6 +91,17 @@ SECTIONS = [
         ("writing-record", "Keeping a record of your writing process", "tools/writing-record.html"),
     ]),
 ]
+
+# College Life: a second band of tiles on the home page, under the academic sections.
+# Each tile is one page: (key, title, goal line, path or None).
+LIFE = ("life", "College Life", "Beyond the classroom", [
+    ("belonging", "Feeling at home in college", "You belong here. Many new students feel unsure at first.", None),
+    ("balancing", "Balancing school, work, and family", "Make room for classes in a full life.", None),
+    ("connections", "Making connections", "Get to know classmates, study partners, and instructors.", None),
+    ("expectations", "Different schools, different expectations", "What may be new about U.S. college, wherever you studied before.", None),
+    ("speaking-up", "Speaking up and being understood", "Take part with confidence, in your own voice.", None),
+    ("when-things-are-hard", "When things feel hard", "Stress is common. Know where to find support at OCTC.", None),
+])
 
 INSTRUCTOR = ("instructors", "Instructor Companion", "", [
     ("assignment-prompts", "Writing a clear assignment prompt", "instructors/assignment-prompts.html"),
@@ -277,6 +288,9 @@ for _sec in SECTIONS + [INSTRUCTOR]:
     for _key, _title, _path in _sec[3]:
         if _path:
             PATHS[_key] = _path
+for _key, _title, _goal, _path in LIFE[3]:
+    if _path:
+        PATHS[_key] = _path
 
 
 def esc(text):
@@ -524,6 +538,19 @@ def build_semester(mode):
 {foot(p, mode)}"""
 
 
+def life_tiles(page_path, mode):
+    out = []
+    for key, title, goal, path in LIFE[3]:
+        if path:
+            head = f'<h3><a href="{mode.url(key, page_path)}">{esc(title)}</a></h3>'
+            foot_ = f'<a class="life-go" href="{mode.url(key, page_path)}" aria-hidden="true" tabindex="-1">Read this page</a>'
+        else:
+            head = f"<h3>{esc(title)}</h3>"
+            foot_ = '<span class="soon">Coming soon</span>'
+        out.append(f'<li><div class="life-head">{head}</div><p class="life-goal">{esc(goal)}</p>{foot_}</li>')
+    return "\n        ".join(out)
+
+
 def build_home(mode):
     p = "index.html"
     cards = "\n".join(
@@ -540,6 +567,7 @@ def build_home(mode):
     body = fill((SRC / "home.html").read_text(), p, mode)
     body = body.replace("<!--SEMESTER-->", semester_card(mode, p))
     body = body.replace("<!--TOC-->", cards).replace("<!--INSTRUCTOR-->", toc_items(INSTRUCTOR, p, mode))
+    body = body.replace("<!--LIFE-->", life_tiles(p, mode))
     desc = "Short lessons for the reading, writing, and communication you do in college classes, with an Instructor Companion for faculty."
     return f"""{head(f"{SITE}: {SUBTITLE}", desc, p, mode)}
 <body class="student">

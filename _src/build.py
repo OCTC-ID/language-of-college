@@ -96,7 +96,7 @@ SECTIONS = [
 # Each tile is one page: (key, title, goal line, path or None).
 LIFE = ("life", "College Life", "Beyond the classroom", [
     ("belonging", "Feeling at home in college", "You belong here. Many new students feel unsure at first.", None),
-    ("balancing", "Balancing school, work, and family", "Find time for classes in a busy life.", None),
+    ("balancing", "Balancing school, work, and family", "Find time for classes in a busy life.", "life/balancing-school-work-family.html"),
     ("connections", "Making connections", "Meet classmates, instructors, and people at campus and community events.", "life/making-connections.html"),
     ("expectations", "Different schools, different expectations", "What may be new about U.S. college, wherever you studied before.", None),
     ("speaking-up", "Speaking up and being understood", "Take part in class with confidence.", None),
@@ -359,6 +359,15 @@ PAGES.update({
         when="you want to get to know classmates, find a study partner, feel more comfortable with your instructors, or find events to attend.",
         meta="About 8 minutes.",
         desc="How to get to know classmates, start a study group, approach instructors, and find campus and community events, with the language of invitations and polite replies.",
+    ),
+})
+
+PAGES.update({
+    "balancing": dict(
+        h1="Balancing School, Work, and Family",
+        when="your classes, job, and family all need your time, and you want a plan.",
+        meta="About 8 minutes.",
+        desc="Five habits for fitting college into a full life, how to ask an instructor for flexibility before a deadline, and the small words used with due dates.",
     ),
 })
 
